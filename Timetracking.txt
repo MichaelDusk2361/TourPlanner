@@ -1,1 +1,3 @@
-Markus 6.3.3031 research wpf, basic ui layout 3h
+Markus 6.3.2021 research wpf, basic ui layout 3h
+Markus 7.3.2021 added viewModel and view, project structure, DAL 3h
+Michael 7.3.2021 added viewModel and view, project structure, DAL 3h
