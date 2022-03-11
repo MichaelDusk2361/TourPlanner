@@ -19,11 +19,13 @@ namespace TourPlanner.PL
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             var searchBarViewModel = new SearchBarViewModel();
+            var toursViewModel = new ToursViewModel();
 
             var window = new MainWindow
             {
-                DataContext = new MainViewModel(searchBarViewModel),
+                DataContext = new MainViewModel(searchBarViewModel, toursViewModel),
                 SearchBarView = { DataContext = searchBarViewModel },
+                ToursView = { DataContext = toursViewModel },
             };
             window.Show();
         }

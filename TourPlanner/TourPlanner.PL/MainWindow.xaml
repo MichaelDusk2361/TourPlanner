@@ -48,9 +48,7 @@
 
 
         <!--Tourlist-->
-        <StackPanel Grid.Column="0" Grid.Row="2" Grid.RowSpan="3" Background="AliceBlue">
-            <TextBlock >Tourlist goes here</TextBlock>
-        </StackPanel>
+        <local:ToursView x:Name="ToursView" Grid.Column="0" Grid.Row="2" Grid.RowSpan="3"/>
 
         
         <!--Vertical Splitter between tourlist and detail view + logs-->
