@@ -1,12 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace TourPlanner.PL.ViewModel
 {
-    public class SearchBarViewModel
+    public class SearchBarViewModel : BaseViewModel
     {
+        public event EventHandler<string> SearchTextChanged;
+
+        public ICommand SearchCommand { get; }
+
+        private string _searchText;
+        public string SearchText
+        {
+            get => _searchText;
+            set
+            {
+                Console.WriteLine("search text set");
+                _searchText = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public SearchBarViewModel()
+        {
+            SearchCommand = new SearchCommand((_) =>
+            {
+                Console.WriteLine("invoked serach text command");
+                if(SearchTextChanged == null)
+                {
+                    Console.WriteLine("event is null");
+                }
+                SearchTextChanged?.Invoke(this, SearchText);
+            });
+        }
     }
 }

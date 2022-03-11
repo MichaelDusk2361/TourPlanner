@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TourPlanner.PL"
+        xmlns:local="clr-namespace:TourPlanner.PL.View"
         mc:Ignorable="d"
-        Title="Tour planner" Height="450" Width="800" MinWidth="450" MinHeight="450">
+        Title="Tour planner" Height="450" Width="800" MinWidth="500" MinHeight="450">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" MinWidth="100"/>
@@ -41,13 +41,12 @@
                     </MenuItem>
                 </Menu>
             </DockPanel>
-            
         </StackPanel>
         
         <!--search bar-->
-        <TextBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">Searchbar goes here</TextBox>
+        <local:SearchBarView x:Name="SearchBarView" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3"/>
 
-        
+
         <!--Tourlist-->
         <StackPanel Grid.Column="0" Grid.Row="2" Grid.RowSpan="3" Background="AliceBlue">
             <TextBlock >Tourlist goes here</TextBlock>
