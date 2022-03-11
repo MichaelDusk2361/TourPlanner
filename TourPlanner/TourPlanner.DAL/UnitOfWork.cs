@@ -17,23 +17,17 @@ namespace TourPlanner.DAL
         private readonly TourPlannerContext _context;
         private static readonly Semaphore s_semaphore = new(1, 1);
 
-        private readonly Lazy<GenericRepository<Tour>> _tourRepository;
+        private GenericRepository<Tour>? _tourRepository = null;
         public GenericRepository<Tour> TourRepository
         {
             get
             {
-                return _tourRepository.Value;
+                if (_tourRepository == null)
+                    _tourRepository = new GenericRepository<Tour>(_context);
+                return _tourRepository;
             }
         }
 
-        private readonly Lazy<GenericRepository<TourLog>> _tourLogRepository;
-        public GenericRepository<TourLog> TourLogRepository
-        {
-            get
-            {
-                return _tourLogRepository.Value;
-            }
-        }
 
         public UnitOfWork()
         {
@@ -41,9 +35,6 @@ namespace TourPlanner.DAL
             {
                 s_semaphore.WaitOne();
                 _context = new TourPlannerContext();
-                //after context is initialized, initialize all repositories
-                _tourRepository = new Lazy<GenericRepository<Tour>>(new GenericRepository<Tour>(_context));
-                _tourLogRepository = new Lazy<GenericRepository<TourLog>>(new GenericRepository<TourLog>(_context));
             }
             finally
             {
