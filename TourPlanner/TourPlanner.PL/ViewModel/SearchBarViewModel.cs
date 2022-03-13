@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using TourPlanner.BL.Helper;
 
 namespace TourPlanner.PL.ViewModel
 {
@@ -25,7 +26,7 @@ namespace TourPlanner.PL.ViewModel
         {
             SearchCommand = new SearchCommand((_) =>
             {
-                Console.WriteLine("invoked serach text command");
+                Console.WriteLine($"invoked serach text command. Text: {SearchText}");
                 if(SearchTextChanged == null)
                 {
                     Console.WriteLine("event is null");

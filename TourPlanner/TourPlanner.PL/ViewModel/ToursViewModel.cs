@@ -11,13 +11,13 @@ namespace TourPlanner.PL.ViewModel
 
     public class ToursViewModel : BaseViewModel
     {
-        private ObservableCollection<Tour>? _tours;
-        public ObservableCollection<Tour> Tours
+        private ObservableCollection<Tour>? _data;
+        public ObservableCollection<Tour> Data
         {
-            get => _tours ??= new ObservableCollection<Tour>();
+            get => _data ??= new ObservableCollection<Tour>();
             set
             {
-                _tours = value;
+                _data = value;
                 OnPropertyChanged();
             }
         }

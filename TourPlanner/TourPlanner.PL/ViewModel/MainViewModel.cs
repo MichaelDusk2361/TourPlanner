@@ -18,7 +18,7 @@ namespace TourPlanner.PL.ViewModel
         public LogsViewModel Logs { get; set; }
 
 
-        private List<Tour> _exampleTours = new()
+        public List<Tour> ExampleTours { get; set; } = new()
         {
             new() { Name = "1. Tour" },
             new() { Name = "2. Tour" },
@@ -54,13 +54,13 @@ namespace TourPlanner.PL.ViewModel
 
         private void LoadTours()
         {
-            Tours.Tours = new(_exampleTours);
+            Tours.Data = new(ExampleTours);
         }
 
         private void SearchTours(string searchText)
         {
-            var res = from e in _exampleTours where e.Name.Contains(searchText) select e;
-            Tours.Tours = new(res);
+            var res = from e in ExampleTours where e.Name.Contains(searchText) select e;
+            Tours.Data = new(res);
             Console.WriteLine($"{searchText} was searched");
         }
     }

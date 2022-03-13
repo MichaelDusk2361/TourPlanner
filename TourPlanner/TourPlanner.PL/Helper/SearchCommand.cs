@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace TourPlanner.PL.ViewModel
+namespace TourPlanner.BL.Helper
 {
     internal class SearchCommand : ICommand
     {
