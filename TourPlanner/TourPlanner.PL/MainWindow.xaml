@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:TourPlanner.PL.View"
         mc:Ignorable="d"
         Title="Tour planner" Height="450" Width="800" MinWidth="500" MinHeight="450">
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" MinWidth="100"/>
@@ -19,30 +20,12 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="25*" MinHeight="150"/>
         </Grid.RowDefinitions>
-        
-        
+
+
         <!--Menubar-->
-        <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3">
-            <DockPanel>
-                <Menu DockPanel.Dock="Top">
-                    <MenuItem Header="_File">
-                        <MenuItem Header="_New" />
-                        <MenuItem Header="_Open" />
-                        <MenuItem Header="_Save" />
-                        <Separator />
-                        <MenuItem Header="_Exit" />
-                    </MenuItem>
-                    <MenuItem Header="_File">
-                        <MenuItem Header="_New" />
-                        <MenuItem Header="_Open" />
-                        <MenuItem Header="_Save" />
-                        <Separator />
-                        <MenuItem Header="_Exit" />
-                    </MenuItem>
-                </Menu>
-            </DockPanel>
-        </StackPanel>
-        
+        <local:MenuBarView x:Name="MenuBarView" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"/>
+
+
         <!--search bar-->
         <local:SearchBarView x:Name="SearchBarView" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3"/>
 
@@ -50,25 +33,21 @@
         <!--Tourlist-->
         <local:ToursView x:Name="ToursView" Grid.Column="0" Grid.Row="2" Grid.RowSpan="3"/>
 
-        
+
         <!--Vertical Splitter between tourlist and detail view + logs-->
         <GridSplitter Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Center"  />
-        
-        
-        <!--Detailed view of tour-->
-        <StackPanel Grid.Column="2" Grid.Row="2" Grid.RowSpan="2" Background="Azure">
-            <TextBlock >Detail view goes here</TextBlock>
-        </StackPanel>
 
-        
+
+        <!--Detailed view of tour-->
+        <local:TourDetailView x:Name="TourDetailView" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2"/>
+
+
         <!--Horizontal Splitter between detail view and logs-->
         <GridSplitter Grid.Row="3"  Grid.Column="2" Height="5" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
-        
-        <!--List of Logs-->
-        <StackPanel Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" Background="Beige">
-            <TextBlock >Logs go here</TextBlock>
-        </StackPanel>
 
+        <!--List of Logs-->
+        <local:LogsView x:Name="LogsView" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2"/>
 
     </Grid>
 </Window>
+

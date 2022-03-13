@@ -16,16 +16,22 @@ namespace TourPlanner.PL
     /// 
     public partial class App : Application
     {
-        private void Application_Startup(object sender, StartupEventArgs e)
+        private void ApplicationStartup(object sender, StartupEventArgs e)
         {
             var searchBarViewModel = new SearchBarViewModel();
             var toursViewModel = new ToursViewModel();
+            var tourDetailViewModel = new TourDetailViewModel();
+            var menuBarViewModel = new MenuBarViewModel();
+            var logsViewModel = new LogsViewModel();
 
             var window = new MainWindow
             {
-                DataContext = new MainViewModel(searchBarViewModel, toursViewModel),
+                DataContext = new MainViewModel(searchBarViewModel, toursViewModel, tourDetailViewModel, menuBarViewModel, logsViewModel),
                 SearchBarView = { DataContext = searchBarViewModel },
                 ToursView = { DataContext = toursViewModel },
+                TourDetailView = { DataContext = tourDetailViewModel },
+                MenuBarView = { DataContext = menuBarViewModel },
+                LogsView = { DataContext = logsViewModel },
             };
             window.Show();
         }

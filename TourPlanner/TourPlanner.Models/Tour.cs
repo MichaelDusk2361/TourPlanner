@@ -1,5 +1,5 @@
 ﻿using TourPlanner.Model.Attributes;
-using System.Collections.Generic;
+
 
 namespace TourPlanner.Model
 {
