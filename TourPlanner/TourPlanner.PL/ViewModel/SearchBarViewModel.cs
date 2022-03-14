@@ -24,14 +24,13 @@ namespace TourPlanner.PL.ViewModel
 
         public SearchBarViewModel()
         {
-            SearchCommand = new SearchCommand((_) =>
+            SearchCommand = new RelayCommand((_) =>
             {
                 Console.WriteLine($"invoked serach text command. Text: {SearchText}");
                 if(SearchTextChanged == null)
-                {
                     Console.WriteLine("event is null");
-                }
-                SearchTextChanged?.Invoke(this, SearchText);
+                else 
+                    SearchTextChanged.Invoke(this, SearchText);
             });
         }
     }
