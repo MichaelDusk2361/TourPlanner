@@ -10,5 +10,7 @@
 
     <StackPanel>
         <TextBlock>Logs of tour goes here</TextBlock>
+        <DataGrid Margin="5,5,5,5" AutoGeneratingColumn="{Binding OnAutoGeneratingColumn}" ItemsSource="{Binding Data}"></DataGrid>
+
     </StackPanel>
 </UserControl>
