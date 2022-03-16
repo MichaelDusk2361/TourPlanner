@@ -10,7 +10,12 @@
 
     <StackPanel>
         <TextBlock>Logs of tour goes here</TextBlock>
-        <DataGrid Margin="5,5,5,5" AutoGeneratingColumn="{Binding OnAutoGeneratingColumn}" ItemsSource="{Binding Data}"></DataGrid>
-
+        <DataGrid AutoGenerateColumns="False" Margin="5,5,5,5" ItemsSource="{Binding Path=Data}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Date" Binding="{Binding Path=Date}" />
+                <DataGridTextColumn Header="Distance" Binding="{Binding Path=Distance}"/>
+                <DataGridTextColumn Width="*" Header="Duration" Binding="{Binding Path=Duration}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </StackPanel>
 </UserControl>
