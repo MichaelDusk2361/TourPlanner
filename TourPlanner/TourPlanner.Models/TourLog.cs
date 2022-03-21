@@ -2,12 +2,14 @@
 
 namespace TourPlanner.Model
 {
-    [DataSource("tourlogs")]
+    [DataSource("logs")]
     public class TourLog : ITEntity
     {
-        public DateTime Date { get; set; }
-        public TimeSpan Duration { get; set; }
-        public float Distance { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
+        public string Comment { get; set; } = string.Empty;
+        public int Difficulty { get; set; } = 0;
+        public string CompletionTime { get; set; } = string.Empty;
+        public int Rating { get; set; } = 0;
         public Guid Id { get; set; }
         public int Version { get; set; }
     }
