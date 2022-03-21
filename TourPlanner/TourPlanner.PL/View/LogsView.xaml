@@ -13,8 +13,10 @@
         <DataGrid AutoGenerateColumns="False" Margin="5,5,5,5" ItemsSource="{Binding Path=Data}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date" Binding="{Binding Path=Date}" />
-                <DataGridTextColumn Header="Distance" Binding="{Binding Path=Distance}"/>
-                <DataGridTextColumn Width="*" Header="Duration" Binding="{Binding Path=Duration}"/>
+                <DataGridTextColumn Header="Comment" Binding="{Binding Path=Comment}"/>
+                <DataGridTextColumn Header="Difficulty" Binding="{Binding Path=Difficulty}"/>
+                <DataGridTextColumn Header="Rating" Binding="{Binding Path=Rating}"/>
+                <DataGridTextColumn Width="*" Header="Duration" Binding="{Binding Path=CompletionTime}"/>
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>

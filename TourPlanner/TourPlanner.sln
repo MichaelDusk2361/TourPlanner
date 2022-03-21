@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6024A772-EA56-43BD-9C57-580EDCE8A104}"
 	ProjectSection(SolutionItems) = preProject
 		..\Timetracking.txt = ..\Timetracking.txt
+		..\TourPlanner_DB.sql = ..\TourPlanner_DB.sql
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TourPlanner.Model", "TourPlanner.Models\TourPlanner.Model.csproj", "{C1BD58BA-5598-43CB-B0F9-F0DEFA7C453C}"
@@ -16,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TourPlanner.DAL", "TourPlan
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TourPlanner.BL", "TourPlanner.BL\TourPlanner.BL.csproj", "{7B37951D-DAFE-4E04-9620-CFD566A79105}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourPlanner.Test", "TourPlanner.Test\TourPlanner.Test.csproj", "{C6B992F5-9273-49A3-A0DC-3AB7FB41E8E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TourPlanner.Test", "TourPlanner.Test\TourPlanner.Test.csproj", "{C6B992F5-9273-49A3-A0DC-3AB7FB41E8E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

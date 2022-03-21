@@ -17,11 +17,11 @@ namespace TourPlanner.PL.ViewModel
         {
             Data = new List<TourLog>()
             {
-                new() { Date = DateTime.Now, Distance = 10, Duration = new(10) },
-                new() { Date = DateTime.Now, Distance = 10, Duration = new(10) },
-                new() { Date = DateTime.Now, Distance = 10, Duration = new(10) },
-                new() { Date = DateTime.Now, Distance = 10, Duration = new(10) },
-                new() { Date = DateTime.Now, Distance = 10, Duration = new(10) },
+                new(),
+                new(),
+                new(),
+                new(),
+                new(),
             };
         }
     }
