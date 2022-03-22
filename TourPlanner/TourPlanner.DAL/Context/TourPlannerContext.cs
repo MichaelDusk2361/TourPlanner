@@ -13,7 +13,6 @@ namespace TourPlanner.DAL.Context
     {
 
         private static string? s_connectionString = null;
-        //load connection string from config file
         public TourPlannerContext() : base(s_connectionString ?? ParseConnectionStringFromConfig())
         {
             LoadTable<Tour>();
@@ -28,7 +27,6 @@ namespace TourPlanner.DAL.Context
                 var parsedConfig = JsonConvert.DeserializeObject<Dictionary<string, string>>(configFile);
                 //"Host= ;Username= ;Password= ;Database= ;IncludeErrorDetail= "
                 s_connectionString = $"Host={parsedConfig["Host"]};Username={parsedConfig["Username"]};Password={parsedConfig["Password"]};Database={parsedConfig["Database"]};IncludeErrorDetail={parsedConfig["IncludeErrorDetail"]}";
-                Console.WriteLine(s_connectionString);
                 return s_connectionString;
             }
             catch (FileNotFoundException e)
