@@ -38,7 +38,8 @@ namespace TourPlanner.DAL.Context
             {
                 Console.WriteLine("AppConfig.json is missing parameters");
                 throw e;
-            }catch(ArgumentNullException e)
+            }
+            catch (ArgumentNullException e)
             {
                 Console.WriteLine("AppConfig.json has invalid format");
                 throw e;
