@@ -4,14 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+using TourPlanner.Common;
 
 namespace TourPlanner.DAL.Context
 {
     public class TourPlannerContext : DBContext
     {
-
         private static string? s_connectionString = null;
         public TourPlannerContext() : base(s_connectionString ?? ParseConnectionStringFromConfig())
         {
@@ -23,8 +21,7 @@ namespace TourPlanner.DAL.Context
         {
             try
             {
-                var configFile = File.ReadAllText("AppConfig.json");
-                var parsedConfig = JsonConvert.DeserializeObject<Dictionary<string, string>>(configFile);
+                var parsedConfig = ConfigFile.Parse("AppConfig.json");
                 //"Host= ;Username= ;Password= ;Database= ;IncludeErrorDetail= "
                 s_connectionString = $"Host={parsedConfig["Host"]};Username={parsedConfig["Username"]};Password={parsedConfig["Password"]};Database={parsedConfig["Database"]};IncludeErrorDetail={parsedConfig["IncludeErrorDetail"]}";
                 return s_connectionString;
