@@ -21,9 +21,12 @@ namespace TourPlanner.PL.ViewModel
             {
                 _selectedTour = value;
                 Console.WriteLine(SelectedTour?.Name);
+                SelectedTourChanged?.Invoke(this, value);
                 //call event which updates tourdetailview and logsview
             }
         }
+
+        public event EventHandler<Tour?>? SelectedTourChanged = null;
 
 
         private ObservableCollection<Tour>? _data;

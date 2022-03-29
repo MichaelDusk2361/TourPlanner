@@ -40,7 +40,21 @@ namespace TourPlanner.PL.ViewModel
             MenuBar = menuBar;
             Logs = logs;
             SearchbarSetup();
+            ToursSetup();
+        }
+
+        private void ToursSetup()
+        {
             LoadTours();
+            AddSelectedTourChangedEvent();
+        }
+
+        private void AddSelectedTourChangedEvent()
+        {
+            Tours.SelectedTourChanged += (_, selectedTour) =>
+            {
+                TourDetail.SelectedTour = selectedTour;
+            };
         }
 
         private void SearchbarSetup()

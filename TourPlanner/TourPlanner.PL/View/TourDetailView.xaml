@@ -7,8 +7,41 @@
              xmlns:local="clr-namespace:TourPlanner.PL.View" d:DataContext="{d:DesignInstance Type=viewmodel:TourDetailViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Grid.Column="0">Name</TextBlock>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedTour.Name}" ></TextBox>
 
-    <StackPanel>
-        <TextBlock>Detail view of tour goes here</TextBlock>
-    </StackPanel>
+        <TextBlock Grid.Row="1" Grid.Column="0">Description</TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedTour.Description}" ></TextBox>
+
+        <TextBlock Grid.Row="2" Grid.Column="0">Start</TextBlock>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedTour.Start}" ></TextBox>
+
+        <TextBlock Grid.Row="3" Grid.Column="0">Destination</TextBlock>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedTour.Destination}" ></TextBox>
+
+        <TextBlock Grid.Row="4" Grid.Column="0">Transport type</TextBlock>
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SelectedTour.TransportType}" ></TextBox>
+
+        <TextBlock Grid.Row="5" Grid.Column="0">Tour distance</TextBlock>
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding SelectedTour.TourDistance}" ></TextBox>
+
+        <TextBlock Grid.Row="6" Grid.Column="0">Estimated time</TextBlock>
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SelectedTour.EstimatedTime}" ></TextBox>
+    </Grid>
+    
 </UserControl>
