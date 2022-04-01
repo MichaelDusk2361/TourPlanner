@@ -10,7 +10,6 @@
         <StackPanel>
             <Button Command="{Binding AddTourCommand}" >Add Tour</Button>
             <Button Command="{Binding RemoveTourCommand}" >Remove Tour</Button>
-            <Button Command="{Binding EditTourCommand}" >Edit Tour</Button>
             <ListView x:Name="tourList" SelectedItem="{Binding SelectedTour}" ItemsSource="{Binding Data}">
                 <ListView.View>
                     <GridView>

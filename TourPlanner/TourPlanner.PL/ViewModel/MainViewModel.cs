@@ -41,38 +41,54 @@ namespace TourPlanner.PL.ViewModel
             Logs = logs;
             SearchbarSetup();
             ToursSetup();
+            TourDetailSetup();
+        }
+
+        private void TourDetailSetup()
+        {
+            AddCancelChangesEvent();
+            AddApplyChangesEvent();
+        }
+
+        private void AddCancelChangesEvent()
+        {
+            TourDetail.CancelChangesEvent += (s, e) =>
+            {
+                if (Tours.SelectedTour != null)
+                    TourDetail.CurrentTour = new(Tours.SelectedTour);
+            };
+        }
+
+        private void AddApplyChangesEvent()
+        {
+            TourDetail.ApplyChangesEvent += (s, e) =>
+            {
+                //this cant work right? Update collection as well
+                Tours.SelectedTour = TourDetail.CurrentTour;
+            };
         }
 
         private void ToursSetup()
         {
             LoadTours();
             AddSelectedTourChangedEvent();
-            AddMakeSelectedTourEditableEven();
-        }
-
-        private void AddMakeSelectedTourEditableEven()
-        {
-            Tours.MakeSelectedTourEditable += (sender, e) =>
-            {
-                TourDetail.IsReadOnly = false;
-            };
         }
 
         private void AddSelectedTourChangedEvent()
         {
-            Tours.SelectedTourChanged += (_, selectedTour) =>
+            Tours.SelectedTourChanged += (s, e) =>
             {
-                TourDetail.IsReadOnly = true;
-                TourDetail.SelectedTour = selectedTour;
+                if (Tours.SelectedTour != null)
+                    TourDetail.CurrentTour = new(Tours.SelectedTour);
             };
         }
 
         private void SearchbarSetup()
         {
-            SearchBar.SearchTextChanged += (sender, searchText) =>
+            SearchBar.SearchEvent += (s, e) =>
             {
-                if (searchText != null)
-                    SearchTours(searchText);
+                if (SearchBar.SearchText != null)
+                    SearchTours(SearchBar.SearchText);
             };
         }
 

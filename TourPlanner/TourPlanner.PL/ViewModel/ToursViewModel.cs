@@ -17,7 +17,6 @@ namespace TourPlanner.PL.ViewModel
     {
         public ICommand AddTourCommand { get; }
         public ICommand RemoveTourCommand { get; }
-        public ICommand EditTourCommand { get; }
 
         public ToursViewModel()
         {
@@ -32,14 +31,7 @@ namespace TourPlanner.PL.ViewModel
                 if(SelectedTour != null)
                     Data.Remove(SelectedTour);
             });
-
-            EditTourCommand = new RelayCommand((_) =>
-            {
-                if (SelectedTour != null)
-                    MakeSelectedTourEditable?.Invoke(this, SelectedTour);
-            });
         }
-        public event EventHandler<Tour?>? MakeSelectedTourEditable = null;
 
 
         private Tour? _selectedTour;
@@ -50,12 +42,12 @@ namespace TourPlanner.PL.ViewModel
             {
                 _selectedTour = value;
                 Console.WriteLine(SelectedTour?.Name);
-                SelectedTourChanged?.Invoke(this, value);
+                SelectedTourChanged?.Invoke(this, EventArgs.Empty);
                 //call event which updates tourdetailview and logsview
             }
         }
 
-        public event EventHandler<Tour?>? SelectedTourChanged = null;
+        public event EventHandler? SelectedTourChanged = null;
 
 
         private ObservableCollection<Tour>? _data;

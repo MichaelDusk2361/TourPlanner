@@ -25,26 +25,27 @@
         </Grid.RowDefinitions>
         
         <TextBlock Grid.Row="0" Grid.Column="0">Name</TextBlock>
-        <TextBox IsReadOnly="{Binding IsReadOnly}" Grid.Row="0" Grid.Column="1" Text="{Binding SelectedTour.Name}" ></TextBox>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding CurrentTour.Name}" ></TextBox>
 
         <TextBlock Grid.Row="1" Grid.Column="0">Description</TextBlock>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedTour.Description}" ></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding CurrentTour.Description}" ></TextBox>
 
         <TextBlock Grid.Row="2" Grid.Column="0">Start</TextBlock>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedTour.Start}" ></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CurrentTour.Start}" ></TextBox>
 
         <TextBlock Grid.Row="3" Grid.Column="0">Destination</TextBlock>
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedTour.Destination}" ></TextBox>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding CurrentTour.Destination}" ></TextBox>
 
         <TextBlock Grid.Row="4" Grid.Column="0">Transport type</TextBlock>
-        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SelectedTour.TransportType}" ></TextBox>
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding CurrentTour.TransportType}" ></TextBox>
 
         <TextBlock Grid.Row="5" Grid.Column="0">Tour distance</TextBlock>
-        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding SelectedTour.TourDistance}" ></TextBox>
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding CurrentTour.TourDistance}" ></TextBox>
 
         <TextBlock Grid.Row="6" Grid.Column="0">Estimated time</TextBlock>
-        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SelectedTour.EstimatedTime}" ></TextBox>
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding CurrentTour.EstimatedTime}" ></TextBox>
     </Grid>
-        <Button Command="{Binding ApplyChangesCommand}" IsEnabled="{Binding ApplyButtonIsEnabled}">Apply</Button>
+        <Button Command="{Binding ApplyChangesCommand}">Apply</Button>
+        <Button Command="{Binding CancelChangesCommand}">Cancel</Button>
     </StackPanel>
 </UserControl>

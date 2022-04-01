@@ -16,5 +16,25 @@ namespace TourPlanner.Model
         public string ImageUrl { get; set; } = string.Empty;
         public Guid Id { get; set; }
         public int Version { get; set; }
+
+        public Tour()
+        {
+
+        }
+
+        public Tour(Tour origin)
+        {
+            Name = origin.Name;
+            Description = origin.Description;
+            Start = origin.Start;
+            Destination = origin.Destination;
+            TransportType = origin.TransportType;
+            TourDistance = origin.TourDistance;
+            EstimatedTime = origin.EstimatedTime;
+            ImageUrl = origin.ImageUrl;
+            Id = origin.Id;
+            Version = origin.Version;
+        }
+    
     }
 }

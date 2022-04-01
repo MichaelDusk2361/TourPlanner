@@ -12,31 +12,8 @@ namespace TourPlanner.PL.ViewModel
 {
     public class TourDetailViewModel : BaseViewModel
     {
-        private bool _isReadOnly = true;
-        public bool IsReadOnly
-        {
-            get => _isReadOnly;
-            set
-            {
-                _isReadOnly = value;
-                ApplyButtonIsEnabled = !value;
-                OnPropertyChanged();
-            }
-        }
-
-        private bool _applyButtonIsEnabled = false;
-        public bool ApplyButtonIsEnabled
-        {
-            get => _applyButtonIsEnabled;
-            set
-            {
-                _applyButtonIsEnabled = value;
-                OnPropertyChanged();
-            }
-        }
-
         private Tour? _selectedTour = null;
-        public Tour? SelectedTour
+        public Tour? CurrentTour
         {
             get
             {
@@ -53,10 +30,20 @@ namespace TourPlanner.PL.ViewModel
         {
             ApplyChangesCommand = new RelayCommand((_) =>
             {
-                Console.WriteLine(JsonConvert.SerializeObject(SelectedTour));
+                ApplyChangesEvent?.Invoke(this, EventArgs.Empty);
+                Console.WriteLine(JsonConvert.SerializeObject(CurrentTour));
+            });
+
+            CancelChangesCommand = new RelayCommand((_) =>
+            {
+                CancelChangesEvent?.Invoke(this, EventArgs.Empty);
             });
         }
 
+        public event EventHandler? ApplyChangesEvent = null;
+        public event EventHandler? CancelChangesEvent = null;
+
         public ICommand ApplyChangesCommand { get; }
+        public ICommand CancelChangesCommand { get; }
     }
 }

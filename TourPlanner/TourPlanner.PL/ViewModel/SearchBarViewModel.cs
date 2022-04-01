@@ -6,12 +6,12 @@ namespace TourPlanner.PL.ViewModel
 {
     public class SearchBarViewModel : BaseViewModel
     {
-        public event EventHandler<string> SearchTextChanged;
+        public event EventHandler? SearchEvent = null;
 
         public ICommand SearchCommand { get; }
 
-        private string _searchText;
-        public string SearchText
+        private string? _searchText = null;
+        public string? SearchText
         {
             get => _searchText;
             set
@@ -27,10 +27,10 @@ namespace TourPlanner.PL.ViewModel
             SearchCommand = new RelayCommand((_) =>
             {
                 Console.WriteLine($"invoked serach text command. Text: {SearchText}");
-                if(SearchTextChanged == null)
+                if(SearchEvent == null)
                     Console.WriteLine("event is null");
                 else 
-                    SearchTextChanged.Invoke(this, SearchText);
+                    SearchEvent.Invoke(this, EventArgs.Empty);
             });
         }
     }
