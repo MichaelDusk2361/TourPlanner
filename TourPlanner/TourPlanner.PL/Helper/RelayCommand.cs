@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace TourPlanner.BL.Helper
+namespace TourPlanner.PL.Helper
 {
     internal class RelayCommand : ICommand
     {

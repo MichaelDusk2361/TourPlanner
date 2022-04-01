@@ -47,12 +47,22 @@ namespace TourPlanner.PL.ViewModel
         {
             LoadTours();
             AddSelectedTourChangedEvent();
+            AddMakeSelectedTourEditableEven();
+        }
+
+        private void AddMakeSelectedTourEditableEven()
+        {
+            Tours.MakeSelectedTourEditable += (sender, e) =>
+            {
+                TourDetail.IsReadOnly = false;
+            };
         }
 
         private void AddSelectedTourChangedEvent()
         {
             Tours.SelectedTourChanged += (_, selectedTour) =>
             {
+                TourDetail.IsReadOnly = true;
                 TourDetail.SelectedTour = selectedTour;
             };
         }

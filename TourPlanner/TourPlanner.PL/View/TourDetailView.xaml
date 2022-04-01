@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
         
         <TextBlock Grid.Row="0" Grid.Column="0">Name</TextBlock>
-        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedTour.Name}" ></TextBox>
+        <TextBox IsReadOnly="{Binding IsReadOnly}" Grid.Row="0" Grid.Column="1" Text="{Binding SelectedTour.Name}" ></TextBox>
 
         <TextBlock Grid.Row="1" Grid.Column="0">Description</TextBlock>
         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedTour.Description}" ></TextBox>

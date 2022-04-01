@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Input;
+using TourPlanner.PL.Helper;
 using TourPlanner.Model;
 using TourPlanner.PL.View;
 
@@ -13,6 +15,33 @@ namespace TourPlanner.PL.ViewModel
 
     public class ToursViewModel : BaseViewModel
     {
+        public ICommand AddTourCommand { get; }
+        public ICommand RemoveTourCommand { get; }
+        public ICommand EditTourCommand { get; }
+
+        public ToursViewModel()
+        {
+            AddTourCommand = new RelayCommand((_) =>
+            {
+                Data.Add(new() { Name = "new tour" });
+            });
+
+            RemoveTourCommand = new RelayCommand((_) =>
+            {
+                //this stuff needs to be wraped in BL who also updates DB by using DAL
+                if(SelectedTour != null)
+                    Data.Remove(SelectedTour);
+            });
+
+            EditTourCommand = new RelayCommand((_) =>
+            {
+                if (SelectedTour != null)
+                    MakeSelectedTourEditable?.Invoke(this, SelectedTour);
+            });
+        }
+        public event EventHandler<Tour?>? MakeSelectedTourEditable = null;
+
+
         private Tour? _selectedTour;
         public Tour? SelectedTour
         {

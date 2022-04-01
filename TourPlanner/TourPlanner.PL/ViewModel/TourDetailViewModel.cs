@@ -9,6 +9,17 @@ namespace TourPlanner.PL.ViewModel
 {
     public class TourDetailViewModel : BaseViewModel
     {
+        private bool _isReadOnly = true;
+        public bool IsReadOnly
+        {
+            get => _isReadOnly;
+            set
+            {
+                _isReadOnly = value;
+                OnPropertyChanged();
+            }
+        }
+
         private Tour? _selectedTour = null;
         public Tour? SelectedTour
         {
@@ -16,8 +27,8 @@ namespace TourPlanner.PL.ViewModel
             {
                 return _selectedTour;
             }
-            set 
-            { 
+            set
+            {
                 _selectedTour = value;
                 OnPropertyChanged();
             }
