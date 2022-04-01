@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using TourPlanner.Model;
+using TourPlanner.PL.Helper;
 
 namespace TourPlanner.PL.ViewModel
 {
@@ -16,6 +19,18 @@ namespace TourPlanner.PL.ViewModel
             set
             {
                 _isReadOnly = value;
+                ApplyButtonIsEnabled = !value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _applyButtonIsEnabled = false;
+        public bool ApplyButtonIsEnabled
+        {
+            get => _applyButtonIsEnabled;
+            set
+            {
+                _applyButtonIsEnabled = value;
                 OnPropertyChanged();
             }
         }
@@ -33,5 +48,15 @@ namespace TourPlanner.PL.ViewModel
                 OnPropertyChanged();
             }
         }
+
+        public TourDetailViewModel()
+        {
+            ApplyChangesCommand = new RelayCommand((_) =>
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(SelectedTour));
+            });
+        }
+
+        public ICommand ApplyChangesCommand { get; }
     }
 }
