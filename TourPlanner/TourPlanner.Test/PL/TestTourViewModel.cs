@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using TourPlanner.BL.Factory;
 using TourPlanner.PL.ViewModel;
 
 namespace TourPlanner.Test.PL
@@ -15,28 +16,13 @@ namespace TourPlanner.Test.PL
         {
             SearchBar = new SearchBarViewModel();
             Tours = new ToursViewModel();
-            Main = new MainViewModel(SearchBar, Tours, null, null, null)
-            {
-                ExampleTours = new()
-                {
-                    new() { Name = "1. Tour" },
-                    new() { Name = "2. Tour" },
-                    new() { Name = "3. Tour" },
-                    new() { Name = "4. Tour" },
-                    new() { Name = "5. Tour" },
-                    new() { Name = "6. Tour" },
-                    new() { Name = "7. Tour" },
-                    new() { Name = "8. Tour" },
-                    new() { Name = "9. Tour" },
-                    new() { Name = "10. Tour" },
-                }
-            };
+            Main = new MainViewModel(SearchBar, Tours, null, null, null, new ControllerFactoryMock());
         }
 
         [Test]
         public void TestExampleData_ShouldContainExampleList()
         {
-            Assert.AreEqual(expected: 10, actual: Tours.Data.Count);
+            Assert.AreEqual(expected: 5, actual: Tours.AllTours.Count);
         }
 
         [Test]
@@ -44,7 +30,7 @@ namespace TourPlanner.Test.PL
         {
             SearchBar.SearchText = "1";
             SearchBar.SearchCommand.Execute(null);
-            Assert.AreEqual(expected: 2, actual: Tours.Data.Count);
+            Assert.AreEqual(expected: 1, actual: Tours.AllTours.Count);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace TourPlanner.PL.ViewModel
     public class TourDetailViewModel : BaseViewModel
     {
         private Tour? _selectedTour = null;
-        public Tour? CurrentTour
+        public Tour? SelectedTour
         {
             get
             {
@@ -31,7 +31,7 @@ namespace TourPlanner.PL.ViewModel
             ApplyChangesCommand = new RelayCommand((_) =>
             {
                 ApplyChangesEvent?.Invoke(this, EventArgs.Empty);
-                Console.WriteLine(JsonConvert.SerializeObject(CurrentTour));
+                Console.WriteLine(JsonConvert.SerializeObject(SelectedTour));
             });
 
             CancelChangesCommand = new RelayCommand((_) =>

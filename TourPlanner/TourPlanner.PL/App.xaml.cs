@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using TourPlanner.BL.Factory;
 using TourPlanner.PL.ViewModel;
 
 namespace TourPlanner.PL
@@ -23,16 +24,19 @@ namespace TourPlanner.PL
             var tourDetailViewModel = new TourDetailViewModel();
             var menuBarViewModel = new MenuBarViewModel();
             var logsViewModel = new LogsViewModel();
+            var controllerFactory = new ControllerFactoryMock();
+            var mainViewModel = new MainViewModel(searchBarViewModel, toursViewModel, tourDetailViewModel, menuBarViewModel, logsViewModel, controllerFactory);
 
             var window = new MainWindow
             {
-                DataContext = new MainViewModel(searchBarViewModel, toursViewModel, tourDetailViewModel, menuBarViewModel, logsViewModel),
+                DataContext = mainViewModel,
                 SearchBarView = { DataContext = searchBarViewModel },
                 ToursView = { DataContext = toursViewModel },
                 TourDetailView = { DataContext = tourDetailViewModel },
                 MenuBarView = { DataContext = menuBarViewModel },
                 LogsView = { DataContext = logsViewModel },
             };
+
             window.Show();
         }
     }

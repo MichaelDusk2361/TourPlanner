@@ -15,7 +15,7 @@ namespace TourPlanner.DAL.Mock
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Attach<TEntity>(TEntity entity) where TEntity : class, ITEntity

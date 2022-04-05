@@ -30,16 +30,31 @@ namespace TourPlanner.DAL.Mock
             //maybe we need better data
             return new()
             {
-                new Tour() { Name = "1. Tour" },
-                new Tour() { Name = "2. Tour" },
-                new Tour() { Name = "3. Tour" },
-                new Tour() { Name = "4. Tour" },
-                new Tour() { Name = "5. Tour" },
-                new Tour() { Name = "6. Tour" },
-                new Tour() { Name = "7. Tour" },
-                new Tour() { Name = "8. Tour" },
-                new Tour() { Name = "9. Tour" },
-                new Tour() { Name = "10. Tour" },
+                new Tour()
+                {
+                    Name = "1. Tour",
+                    Id = new("7c9e6679-7425-40de-944b-e07fc1f90ae7"),                    
+                },
+                new Tour()
+                {
+                    Name = "2. Tour",
+                    Id = new("8c9e6679-7425-40de-944b-e07fc1f90ae7"),
+                },
+                new Tour()
+                {
+                    Name = "3. Tour",
+                    Id = new("9c9e6679-7425-40de-944b-e07fc1f90ae7"),
+                },
+                new Tour()
+                {
+                    Name = "4. Tour",
+                    Id = new("ac9e6679-7425-40de-944b-e07fc1f90ae7"),
+                },
+                new Tour()
+                {
+                    Name = "5. Tour",
+                    Id = new("bc9e6679-7425-40de-944b-e07fc1f90ae7"),
+                },
             };
         }
 

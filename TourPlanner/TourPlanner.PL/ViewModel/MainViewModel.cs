@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TourPlanner.BL.Factory;
 using TourPlanner.Model;
 
 namespace TourPlanner.PL.ViewModel
@@ -17,31 +18,31 @@ namespace TourPlanner.PL.ViewModel
         public MenuBarViewModel MenuBar { get; set; }
         public LogsViewModel Logs { get; set; }
 
+        public IControllerFactory ControllerFactory { get; set; }
 
-        public List<Tour> ExampleTours { get; set; } = new()
-        {
-            new() { Name = "1. Tour" },
-            new() { Name = "2. Tour" },
-            new() { Name = "3. Tour" },
-            new() { Name = "4. Tour" },
-            new() { Name = "5. Tour" },
-            new() { Name = "6. Tour" },
-            new() { Name = "7. Tour" },
-            new() { Name = "8. Tour" },
-            new() { Name = "9. Tour" },
-            new() { Name = "10. Tour" },
-        };
-
-        public MainViewModel(SearchBarViewModel searchBar, ToursViewModel tours, TourDetailViewModel tourDetail, MenuBarViewModel menuBar, LogsViewModel logs)
+        public MainViewModel(SearchBarViewModel searchBar, ToursViewModel tours, TourDetailViewModel tourDetail, MenuBarViewModel menuBar, LogsViewModel logs, IControllerFactory controllerFactory)
         {
             SearchBar = searchBar;
             Tours = tours;
             TourDetail = tourDetail;
             MenuBar = menuBar;
             Logs = logs;
-            SearchbarSetup();
-            ToursSetup();
-            TourDetailSetup();
+            ControllerFactory = controllerFactory;
+
+            Setup();
+
+            //controller have to be used like this to relase recources, would management by factory be an improvement?
+            //using var tourController = ControllerFactory.CreateTourController();
+        }
+
+        private void Setup()
+        {
+            if (SearchBar != null)
+                SearchbarSetup();
+            if (Tours != null)
+                ToursSetup();
+            if (TourDetail != null)
+                TourDetailSetup();
         }
 
         private void TourDetailSetup()
@@ -55,7 +56,7 @@ namespace TourPlanner.PL.ViewModel
             TourDetail.CancelChangesEvent += (s, e) =>
             {
                 if (Tours.SelectedTour != null)
-                    TourDetail.CurrentTour = new(Tours.SelectedTour);
+                    TourDetail.SelectedTour = new(Tours.SelectedTour);
             };
         }
 
@@ -63,9 +64,13 @@ namespace TourPlanner.PL.ViewModel
         {
             TourDetail.ApplyChangesEvent += (s, e) =>
             {
-                //this cant work right? Update collection as well
-                Tours.SelectedTour = TourDetail.CurrentTour;
-                // update selected tour in DB and refetch list
+                Tours.SelectedTour = TourDetail.SelectedTour;
+                using var tourController = ControllerFactory.CreateTourController();
+                if (Tours.SelectedTour != null)
+                {
+                    tourController.UpdateTour(Tours.SelectedTour);
+                    Tours.AllTours = new(tourController.GetAllTours());
+                }
             };
         }
 
@@ -80,7 +85,7 @@ namespace TourPlanner.PL.ViewModel
             Tours.SelectedTourChanged += (s, e) =>
             {
                 if (Tours.SelectedTour != null)
-                    TourDetail.CurrentTour = new(Tours.SelectedTour);
+                    TourDetail.SelectedTour = new(Tours.SelectedTour);
             };
         }
 
@@ -95,13 +100,15 @@ namespace TourPlanner.PL.ViewModel
 
         private void LoadTours()
         {
-            Tours.Data = new(ExampleTours);
+            using var tourController = ControllerFactory.CreateTourController();
+            Tours.AllTours = new(tourController.GetAllTours());
         }
 
         private void SearchTours(string searchText)
         {
-            var res = from e in ExampleTours where e.Name.Contains(searchText) select e;
-            Tours.Data = new(res);
+            using var tourController = ControllerFactory.CreateTourController();
+            var res = from e in tourController.GetAllTours() where e.Name.Contains(searchText) select e;
+            Tours.AllTours = new(res);
             Console.WriteLine($"{searchText} was searched");
         }
     }

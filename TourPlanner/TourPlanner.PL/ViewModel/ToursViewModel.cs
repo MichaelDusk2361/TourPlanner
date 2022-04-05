@@ -12,7 +12,6 @@ using TourPlanner.PL.View;
 
 namespace TourPlanner.PL.ViewModel
 {
-
     public class ToursViewModel : BaseViewModel
     {
         public ICommand AddTourCommand { get; }
@@ -22,14 +21,14 @@ namespace TourPlanner.PL.ViewModel
         {
             AddTourCommand = new RelayCommand((_) =>
             {
-                Data.Add(new() { Name = "new tour" });
+                AllTours.Add(new() { Name = "new tour" });
             });
 
             RemoveTourCommand = new RelayCommand((_) =>
             {
                 //this stuff needs to be wraped in BL who also updates DB by using DAL
                 if(SelectedTour != null)
-                    Data.Remove(SelectedTour);
+                    AllTours.Remove(SelectedTour);
             });
         }
 
@@ -51,7 +50,7 @@ namespace TourPlanner.PL.ViewModel
 
 
         private ObservableCollection<Tour>? _data;
-        public ObservableCollection<Tour> Data
+        public ObservableCollection<Tour> AllTours
         {
             get => _data ??= new ObservableCollection<Tour>();
             set

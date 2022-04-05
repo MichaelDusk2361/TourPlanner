@@ -2,3 +2,4 @@ Markus 6.3.2021 research wpf, basic ui layout 3h
 Markus 7.3.2021 added viewModel and view, project structure, DAL 3h
 Michael 7.3.2021 added viewModel and view, project structure, DAL 3h
 Markus 21.3.2021 added and created DB 0.5h
+Markus 5.4.2021 mockup of dal created factories for controller 5h

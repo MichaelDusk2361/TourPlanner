@@ -16,7 +16,7 @@ namespace TourPlanner.DAL.Context {
             Entities = entities;
         }
 
-        public TEntity Find(Guid id) {
+        public TEntity? Find(Guid id) {
             foreach (var entity in Entities) {
                 if (entity.Id == id)
                     return entity;
@@ -26,10 +26,12 @@ namespace TourPlanner.DAL.Context {
 
         public void Update(TEntity entityToUpdate) {
             var destination = Find(entityToUpdate.Id);
+            if (destination == null)
+                return;
             var sourceProperties = typeof(TEntity).GetProperties();
             foreach (var sourceProp in sourceProperties) {
                 var targetProp = entityToUpdate.GetType().GetProperty(sourceProp.Name);
-                targetProp.SetValue(destination, sourceProp.GetValue(entityToUpdate, null), null);
+                targetProp?.SetValue(destination, sourceProp.GetValue(entityToUpdate, null), null);
             }
         }
 

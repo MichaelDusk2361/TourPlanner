@@ -18,8 +18,8 @@ namespace TourPlanner.DAL.Repository {
             _table = context.Table<TEntity>();
         }
 
-        public List<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, 
-            IOrderedQueryable<TEntity>> orderBy = null) {
+        public List<TEntity> Get(Expression<Func<TEntity, bool>>? filter = null, Func<IQueryable<TEntity>, 
+            IOrderedQueryable<TEntity>>? orderBy = null) {
 
             IQueryable<TEntity> query = _table;
 
@@ -32,7 +32,7 @@ namespace TourPlanner.DAL.Repository {
                 return query.ToList();
         }
 
-        public TEntity GetById(Guid id) {
+        public TEntity? GetById(Guid id) {
             return _table.Find(id);
         }
 
@@ -42,8 +42,9 @@ namespace TourPlanner.DAL.Repository {
         }
 
         public void Delete(Guid id) {
-            TEntity entityToDelete = _table.Find(id);
-            Delete(entityToDelete);
+            var entityToDelete = _table.Find(id);
+            if (entityToDelete != null)
+                Delete(entityToDelete);
         }
 
         public void Delete(TEntity entityToDelete) {
