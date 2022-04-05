@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TourPlanner.DAL.Repository {
-    public class GenericRepository<TEntity> where TEntity : class, ITEntity{
+    public class GenericRepository<TEntity> where TEntity : class, ITEntity
+    {
         private readonly TourPlannerContext _context;
         private readonly DBTable<TEntity> _table;
 

@@ -65,6 +65,7 @@ namespace TourPlanner.PL.ViewModel
             {
                 //this cant work right? Update collection as well
                 Tours.SelectedTour = TourDetail.CurrentTour;
+                // update selected tour in DB and refetch list
             };
         }
 

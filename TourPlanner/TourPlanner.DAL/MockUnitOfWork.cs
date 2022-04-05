@@ -1,19 +1,16 @@
-﻿using TourPlanner.DAL.Context;
-using TourPlanner.DAL.Exceptions;
-using TourPlanner.DAL.Repository;
-using TourPlanner.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
+using TourPlanner.DAL.Context;
+using TourPlanner.DAL.Repository;
+using TourPlanner.Model;
 
 namespace TourPlanner.DAL
 {
-    public class UnitOfWork : IUnitOfWork
+    public class MockUnitOfWork : IUnitOfWork
     {
-
         private readonly TourPlannerContext _context;
         private static readonly Semaphore s_semaphore = new(1, 1);
 
@@ -41,7 +38,7 @@ namespace TourPlanner.DAL
         }
 
 
-        public UnitOfWork()
+        public MockUnitOfWork()
         {
             try
             {
