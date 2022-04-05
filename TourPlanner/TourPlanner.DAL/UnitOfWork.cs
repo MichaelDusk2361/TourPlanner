@@ -28,7 +28,6 @@ namespace TourPlanner.DAL
             }
         }
 
-
         private GenericRepository<TourLog>? _tourLogRepository = null;
         public GenericRepository<TourLog> TourLogRepository
         {

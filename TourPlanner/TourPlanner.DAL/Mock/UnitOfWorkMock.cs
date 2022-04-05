@@ -7,12 +7,11 @@ using TourPlanner.DAL.Context;
 using TourPlanner.DAL.Repository;
 using TourPlanner.Model;
 
-namespace TourPlanner.DAL
+namespace TourPlanner.DAL.Mock
 {
-    public class MockUnitOfWork : IUnitOfWork
+    public class UnitOfWorkMock : IUnitOfWork
     {
-        private readonly TourPlannerContext _context;
-        private static readonly Semaphore s_semaphore = new(1, 1);
+        private readonly TourPlannerContextMock _context;
 
         private GenericRepository<Tour>? _tourRepository = null;
         public GenericRepository<Tour> TourRepository
@@ -38,44 +37,28 @@ namespace TourPlanner.DAL
         }
 
 
-        public MockUnitOfWork()
+        public UnitOfWorkMock()
         {
-            try
-            {
-                s_semaphore.WaitOne();
-                _context = new TourPlannerContext();
-            }
-            finally
-            {
-                s_semaphore.Release();
-            }
+            _context = new TourPlannerContextMock();
         }
 
         public void Save()
         {
-            try
-            {
-                s_semaphore.WaitOne();
-                _context.SaveChanges();
-            }
-            finally
-            {
-                s_semaphore.Release();
-            }
+            _context.SaveChanges();
         }
 
         public bool TrySave()
         {
             try
             {
-                Save();
+                _context.SaveChanges();
+                return true;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 return false;
             }
-            return true;
         }
 
         private bool _disposed = false;

@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace TourPlanner.DAL.Repository {
     public class GenericRepository<TEntity> where TEntity : class, ITEntity
     {
-        private readonly TourPlannerContext _context;
+        private readonly IDBContext _context;
         private readonly DBTable<TEntity> _table;
 
-        public GenericRepository(TourPlannerContext context) {
+        public GenericRepository(IDBContext context) {
             _context = context;
             _table = context.Table<TEntity>();
         }

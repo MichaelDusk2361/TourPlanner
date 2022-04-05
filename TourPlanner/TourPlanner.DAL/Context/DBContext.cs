@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TourPlanner.DAL.Context {
-    public class DBContext : IDisposable {
+    public class DBContext : IDBContext {
         public Dictionary<ITEntity, EntityState> Entities { get; private set; } = new();
 
         private readonly NpgsqlConnection _connection;
