@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TourPlanner.PL.View" xmlns:viewmodel="clr-namespace:TourPlanner.PL.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:SearchBarViewModel}"
+             xmlns:local="clr-namespace:TourPlanner.PL.View" xmlns:viewmodel="clr-namespace:TourPlanner.PL.ViewModel.Sub" d:DataContext="{d:DesignInstance Type=viewmodel:SearchBarViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="400">
     <Grid>

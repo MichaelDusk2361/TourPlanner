@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:viewmodel="clr-namespace:TourPlanner.PL.ViewModel"
+             xmlns:viewmodel="clr-namespace:TourPlanner.PL.ViewModel.Sub"
              xmlns:local="clr-namespace:TourPlanner.PL.View" d:DataContext="{d:DesignInstance Type=viewmodel:TourDetailViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -28,13 +28,13 @@
         <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedTour.Name}" ></TextBox>
 
         <TextBlock Grid.Row="1" Grid.Column="0">Description</TextBlock>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedTour.Description}" ></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedTour.Start}" ></TextBox>
 
         <TextBlock Grid.Row="2" Grid.Column="0">Start</TextBlock>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedTour.Start}" ></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedTour.Destination}" ></TextBox>
 
         <TextBlock Grid.Row="3" Grid.Column="0">Destination</TextBlock>
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedTour.Destination}" ></TextBox>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedTour.EstimatedTime}" ></TextBox>
 
         <TextBlock Grid.Row="4" Grid.Column="0">Transport type</TextBlock>
         <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SelectedTour.TransportType}" ></TextBox>
@@ -43,7 +43,7 @@
         <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding SelectedTour.TourDistance}" ></TextBox>
 
         <TextBlock Grid.Row="6" Grid.Column="0">Estimated time</TextBlock>
-        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SelectedTour.EstimatedTime}" ></TextBox>
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SelectedTour.Description}" ></TextBox>
     </Grid>
         <Button Command="{Binding ApplyChangesCommand}">Apply</Button>
         <Button Command="{Binding CancelChangesCommand}">Cancel</Button>

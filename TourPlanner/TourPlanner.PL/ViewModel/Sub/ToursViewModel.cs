@@ -21,14 +21,12 @@ namespace TourPlanner.PL.ViewModel.Sub
         {
             AddTourCommand = new RelayCommand((_) =>
             {
-                AllTours.Add(new() { Name = "new tour" });
+                AddTourEvent?.Invoke(this, EventArgs.Empty);
             });
 
             RemoveTourCommand = new RelayCommand((_) =>
             {
-                //this stuff needs to be wraped in BL who also updates DB by using DAL
-                if(SelectedTour != null)
-                    AllTours.Remove(SelectedTour);
+                RemoveTourEvent?.Invoke(this, EventArgs.Empty);
             });
         }
 
@@ -42,11 +40,12 @@ namespace TourPlanner.PL.ViewModel.Sub
                 _selectedTour = value;
                 Console.WriteLine(SelectedTour?.Name);
                 SelectedTourChanged?.Invoke(this, EventArgs.Empty);
-                //call event which updates tourdetailview and logsview
             }
         }
 
         public event EventHandler? SelectedTourChanged = null;
+        public event EventHandler? AddTourEvent = null;
+        public event EventHandler? RemoveTourEvent = null;
 
 
         private ObservableCollection<Tour>? _data;

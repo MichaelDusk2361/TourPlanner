@@ -12,6 +12,35 @@ namespace TourPlanner.PL.ViewModel.Main
         {
             LoadTours();
             AddSelectedTourChangedEvent();
+            AddAddTourEvent();
+            AddRemoveTourEvent();
+        }
+
+        private void AddRemoveTourEvent()
+        {
+            Tours.RemoveTourEvent += (s, e) =>
+            {
+                if (Tours.SelectedTour == null)
+                    return;
+
+                using var tourController = ControllerFactory.CreateTourController();
+                tourController.DeleteTour(Tours.SelectedTour);
+                Tours.AllTours = new(tourController.GetAllTours());
+            };
+        }
+
+        private void AddAddTourEvent()
+        {
+            Tours.AddTourEvent += (s, e) =>
+            {
+                using var tourController = ControllerFactory.CreateTourController();
+                tourController.AddTour(new() 
+                { 
+                    Name = "New tour",
+                    Id = Guid.NewGuid(),
+                });
+                Tours.AllTours = new(tourController.GetAllTours());
+            };
         }
 
         private void AddSelectedTourChangedEvent()

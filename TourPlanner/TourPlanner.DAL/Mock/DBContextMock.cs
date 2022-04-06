@@ -15,7 +15,18 @@ namespace TourPlanner.DAL.Mock
 
         public void SaveChanges()
         {
-            
+            foreach (var entity in Entities)
+            {
+                if (entity.Value == EntityState.Unchanged)
+                    continue;
+
+                if (entity.Value == EntityState.Added)
+                    DBMock.Insert(entity.Key);
+                else if (entity.Value == EntityState.Modified)
+                    DBMock.Update(entity.Key);
+                else if (entity.Value == EntityState.Deleted)
+                    DBMock.Delete(entity.Key);
+            }
         }
 
         public void Attach<TEntity>(TEntity entity) where TEntity : class, ITEntity

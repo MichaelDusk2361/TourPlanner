@@ -23,7 +23,10 @@ namespace TourPlanner.BL.Controller
             if (!_disposed)
             {
                 if (disposing)
+                {
+                    _uow.Save();
                     _uow.Dispose();
+                }
             }
             _disposed = true;
         }

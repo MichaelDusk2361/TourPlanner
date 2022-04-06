@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using TourPlanner.DAL.Exceptions;
 using TourPlanner.Model;
 using TourPlanner.Model.Attributes;
 
@@ -11,9 +12,6 @@ namespace TourPlanner.DAL.Mock
 {
     public class DBMock
     {
-        //tooDo:
-        //get all entries should work like orm using data source attribute of ITEntity
-        //add insert, update and delete for in memory data
 
         static public Dictionary<string, List<ITEntity>> Data { get; private set; } = new()
         {
@@ -48,7 +46,6 @@ namespace TourPlanner.DAL.Mock
                     },
                 }
             },
-
             {
                 GetTableName(typeof(TourLog)),
                 new()
@@ -62,14 +59,42 @@ namespace TourPlanner.DAL.Mock
             }
         };
 
+        static public void Update<TEntity>(TEntity entity) where TEntity : class, ITEntity
+        {
+            var target = (from e in Data[GetTableName(entity.GetType())] where e.Id == entity.Id select e).First();
+
+            if(target.Version > entity.Version)
+                throw new StaleObjectStateException(GetTableName(typeof(TEntity)));
+
+            entity.Version++;
+
+            if (target != null)
+            {
+                var sourceProperties = typeof(TEntity).GetProperties();
+                foreach (var sourceProp in sourceProperties)
+                {
+                    var targetProp = entity.GetType().GetProperty(sourceProp.Name);
+                    targetProp?.SetValue(target, sourceProp.GetValue(entity, null), null);
+                }
+            }
+
+        }
+
+        static public void Delete<TEntity>(TEntity entity) where TEntity : class, ITEntity
+        {
+            Data[GetTableName(entity.GetType())].RemoveAll(e => e.Id == entity.Id);
+        }
+
+        static public void Insert<TEntity>(TEntity entity) where TEntity : class, ITEntity
+        {
+            Data[GetTableName(entity.GetType())].Add(entity);
+        }
 
         static public List<ITEntity> GetMockData<TEntity>() where TEntity : class, ITEntity
         {
-            return Data[GetTableName(typeof(TEntity))] as List<ITEntity>;
+            return new(Data[GetTableName(typeof(TEntity))]);
         }
 
-
-        
         private static string GetTableName(Type entityType)
         {
             var res = entityType.GetCustomAttribute<DataSourceAttribute>(false)?.TableName;

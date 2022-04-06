@@ -13,7 +13,6 @@ namespace TourPlanner.PL
         [STAThread]
         public static void Main(string[] args)
         {
-            Class1.TestDALMock();
             var app = new App();
             app.InitializeComponent();
             app.Run();

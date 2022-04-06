@@ -19,6 +19,16 @@ namespace TourPlanner.BL.Controller
             return _uow.TourRepository.Get();
         }
 
+        public void DeleteTour(Tour tour)
+        {
+            _uow.TourRepository.Delete(tour);
+        }
+
+        public void AddTour(Tour tour)
+        {
+            _uow.TourRepository.Insert(tour);
+        }
+
         public void UpdateTour(Tour tour)
         {
             _uow.TourRepository.Update(tour);
