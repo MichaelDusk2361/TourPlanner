@@ -13,6 +13,8 @@ namespace TourPlanner.PL
         [STAThread]
         public static void Main(string[] args)
         {
+            Class1.RunAsync();
+
             var app = new App();
             app.InitializeComponent();
             app.Run();

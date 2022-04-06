@@ -24,7 +24,10 @@ namespace TourPlanner.BL.Controller
             {
                 if (disposing)
                 {
-                    _uow.Save();
+                    if (!_uow.TrySave())
+                    {
+                        Console.WriteLine("Error during DB save");
+                    }
                     _uow.Dispose();
                 }
             }

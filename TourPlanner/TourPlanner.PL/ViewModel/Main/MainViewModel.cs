@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TourPlanner.BL.Factory;
-using TourPlanner.Model;
+﻿using TourPlanner.BL.Factory;
 using TourPlanner.PL.ViewModel.Sub;
 
 namespace TourPlanner.PL.ViewModel.Main
@@ -31,13 +23,6 @@ namespace TourPlanner.PL.ViewModel.Main
             ControllerFactory = controllerFactory;
 
             Setup();
-
-            //controller have to be used like this to relase recources, would management by factory be an improvement?
-            //using var tourController = ControllerFactory.CreateTourController();
-            
-            //where should uow save() be called? if the controller is disposed?
-
-            //use some ioc container to intercept methods and inject unitofwork into methods?
         }
 
         private void Setup()
