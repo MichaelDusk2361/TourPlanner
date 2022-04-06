@@ -15,7 +15,7 @@ namespace TourPlanner.Model
         public string EstimatedTime { get; set; } = string.Empty;
         public string ImageUrl { get; set; } = string.Empty;
         public Guid Id { get; set; }
-        public int Version { get; set; }
+        public int Version { get; set; } = 1;
 
         public Tour()
         {

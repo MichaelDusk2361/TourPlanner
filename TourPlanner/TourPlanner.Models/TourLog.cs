@@ -11,6 +11,6 @@ namespace TourPlanner.Model
         public string CompletionTime { get; set; } = string.Empty;
         public int Rating { get; set; } = 0;
         public Guid Id { get; set; }
-        public int Version { get; set; }
+        public int Version { get; set; } = 1;
     }
 }

@@ -8,7 +8,7 @@ using System.Windows.Input;
 using TourPlanner.Model;
 using TourPlanner.PL.Helper;
 
-namespace TourPlanner.PL.ViewModel
+namespace TourPlanner.PL.ViewModel.Sub
 {
     public class TourDetailViewModel : BaseViewModel
     {

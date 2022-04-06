@@ -10,7 +10,7 @@ using TourPlanner.PL.Helper;
 using TourPlanner.Model;
 using TourPlanner.PL.View;
 
-namespace TourPlanner.PL.ViewModel
+namespace TourPlanner.PL.ViewModel.Sub
 {
     public class ToursViewModel : BaseViewModel
     {

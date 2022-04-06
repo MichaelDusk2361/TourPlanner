@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using TourPlanner.BL.Factory;
 using TourPlanner.PL.ViewModel;
+using TourPlanner.PL.ViewModel.Main;
+using TourPlanner.PL.ViewModel.Sub;
 
 namespace TourPlanner.PL
 {

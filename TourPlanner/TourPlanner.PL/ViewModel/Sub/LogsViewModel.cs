@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using TourPlanner.Model;
 
-namespace TourPlanner.PL.ViewModel
+namespace TourPlanner.PL.ViewModel.Sub
 {
-    public class LogsViewModel
+    public class LogsViewModel : BaseViewModel
     {
         public IEnumerable<TourLog> Data { get; set; }
 

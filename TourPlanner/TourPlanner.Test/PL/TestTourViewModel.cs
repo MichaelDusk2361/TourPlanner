@@ -1,6 +1,8 @@
 using NUnit.Framework;
 using TourPlanner.BL.Factory;
 using TourPlanner.PL.ViewModel;
+using TourPlanner.PL.ViewModel.Main;
+using TourPlanner.PL.ViewModel.Sub;
 
 namespace TourPlanner.Test.PL
 {

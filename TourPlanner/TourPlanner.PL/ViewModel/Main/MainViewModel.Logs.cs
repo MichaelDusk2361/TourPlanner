@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TourPlanner.PL.ViewModel
+namespace TourPlanner.PL.ViewModel.Main
 {
-    public class MenuBarViewModel
+    public partial class MainViewModel
     {
     }
 }
