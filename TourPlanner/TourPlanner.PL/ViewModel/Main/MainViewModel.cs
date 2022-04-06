@@ -32,11 +32,12 @@ namespace TourPlanner.PL.ViewModel.Main
 
             Setup();
 
-            //what is happening in updateEntitys in dbcontext?
-
             //controller have to be used like this to relase recources, would management by factory be an improvement?
-            //use some ioc container to intercept methods and inject unitofwork into methods?
             //using var tourController = ControllerFactory.CreateTourController();
+            
+            //where should uow save() be called? if the controller is disposed?
+
+            //use some ioc container to intercept methods and inject unitofwork into methods?
         }
 
         private void Setup()

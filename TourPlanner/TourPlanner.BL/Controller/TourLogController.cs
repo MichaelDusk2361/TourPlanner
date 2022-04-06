@@ -7,34 +7,14 @@ using TourPlanner.DAL;
 
 namespace TourPlanner.BL.Controller
 {
-    public class TourLogController : IDisposable
+    public class TourLogController : BaseController
     {
-        private readonly IUnitOfWork _uow;
 
-        internal TourLogController(IUnitOfWork uow)
+        internal TourLogController(IUnitOfWork uow) : base(uow)
         {
-            _uow = uow;
         }
 
 
 
-        #region IDisposable
-        private bool _disposed = false;
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!_disposed)
-            {
-                if (disposing)
-                    _uow.Dispose();
-            }
-            _disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-        #endregion
     }
 }

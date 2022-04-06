@@ -8,14 +8,10 @@ using TourPlanner.Model;
 
 namespace TourPlanner.BL.Controller
 {
-    public class TourController : IDisposable
+    public class TourController : BaseController
     {
-        private readonly IUnitOfWork _uow;
-
-        internal TourController(IUnitOfWork uow)
+        internal TourController(IUnitOfWork uow) : base(uow)
         {
-            //where will the save function be called?
-            _uow = uow;
         }
 
         public List<Tour> GetAllTours()
@@ -27,24 +23,5 @@ namespace TourPlanner.BL.Controller
         {
             _uow.TourRepository.Update(tour);
         }
-
-        #region IDisposable
-        private bool _disposed = false;
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!_disposed)
-            {
-                if (disposing)
-                    _uow.Dispose();
-            }
-            _disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-        #endregion
     }
 }
