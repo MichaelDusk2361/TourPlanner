@@ -78,13 +78,10 @@ namespace TourPlanner.DAL.Context
 
         private void UpdateEntities()
         {
-            var keysToDelete = from entity in Entities where entity.Value == EntityState.Deleted select entity.Key;
-            keysToDelete.ToList().ForEach(entity => Entities.Remove(entity));
-            foreach (var entity in Entities)
-            {
-                if (entity.Value != EntityState.Unchanged)
-                    Entities[entity.Key] = EntityState.Unchanged;
-            }
+            var entitiesToDelete = from entity in Entities where entity.Value == EntityState.Deleted select entity.Key;
+            entitiesToDelete.ToList().ForEach(entity => Entities.Remove(entity));
+            var entitiesToResetState = from entity in Entities where entity.Value != EntityState.Unchanged select entity.Key;
+            entitiesToResetState.ToList().ForEach(entity => Entities[entity] = EntityState.Unchanged);
         }
 
         private bool _disposed = false;
