@@ -8,5 +8,6 @@ The file should contain a json of this format:\
  &emsp;"Password": "",\
  &emsp;"Database": "tourplannerdb",\
  &emsp;"IncludeErrorDetail": "true\false",\
- &emsp;"MapQuestApiKey": ""\
+ &emsp;"MapQuestApiKey": "",\
+ &emsp;"ProductionDatabase": "true\false"\
 }

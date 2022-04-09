@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using TourPlanner.BL.Factory;
+using TourPlanner.Common;
 using TourPlanner.PL.ViewModel;
 using TourPlanner.PL.ViewModel.Main;
 using TourPlanner.PL.ViewModel.Sub;
@@ -26,7 +27,7 @@ namespace TourPlanner.PL
             var tourDetailViewModel = new TourDetailViewModel();
             var menuBarViewModel = new MenuBarViewModel();
             var logsViewModel = new LogsViewModel();
-            var controllerFactory = new ControllerFactoryMock();
+            var controllerFactory = CreateControllerFactory();
             var mainViewModel = new MainViewModel(searchBarViewModel, toursViewModel, tourDetailViewModel, menuBarViewModel, logsViewModel, controllerFactory);
 
             var window = new MainWindow
@@ -40,6 +41,12 @@ namespace TourPlanner.PL
             };
 
             window.Show();
+        }
+
+        private static IControllerFactory CreateControllerFactory()
+        {
+            var useProductionDatabase = ConfigFile.Parse("AppConfig.json")?["ProductionDatabase"] == "true";
+            return useProductionDatabase ? new ControllerFactory() : new ControllerFactoryMock();
         }
     }
 }
