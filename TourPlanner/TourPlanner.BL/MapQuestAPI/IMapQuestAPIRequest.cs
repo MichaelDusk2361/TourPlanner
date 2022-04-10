@@ -7,18 +7,12 @@ using System.Threading.Tasks;
 
 namespace TourPlanner.BL.MapQuestAPI
 {
-    internal interface IMapQuestAPIRequest
+    public interface IMapQuestAPIRequest
     {
-
         public JObject? MapQuestResponse { get; }
 
-        public string From { get; }
-        public string To { get; }
-        public string TransportMedium { get; }
-
-        public Task ExecuteAsync();
+        public Task ExecuteAsync(string from, string to, string transportMedium);
 
         public Task<byte[]> GetRouteImageAsync();
-
     }
 }
