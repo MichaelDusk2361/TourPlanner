@@ -21,9 +21,8 @@ namespace TourPlanner.DAL.Context
         {
             try
             {
-                var parsedConfig = ConfigFile.Parse("AppConfig.json");
                 //"Host= ;Username= ;Password= ;Database= ;IncludeErrorDetail= "
-                s_connectionString = $"Host={parsedConfig["Host"]};Username={parsedConfig["Username"]};Password={parsedConfig["Password"]};Database={parsedConfig["Database"]};IncludeErrorDetail={parsedConfig["IncludeErrorDetail"]}";
+                s_connectionString = $"Host={ConfigFile.AppSettings("Host")};Username={ConfigFile.AppSettings("Username")};Password={ConfigFile.AppSettings("Password")};Database={ConfigFile.AppSettings("Database")};IncludeErrorDetail={ConfigFile.AppSettings("IncludeErrorDetail")}";
                 return s_connectionString;
             }
             catch (FileNotFoundException e)

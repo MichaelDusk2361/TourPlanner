@@ -8,5 +8,10 @@ namespace TourPlanner.BL.MapQuestAPI
 {
     internal interface IMapQuestAPIRequest
     {
+
+
+
+
+
     }
 }

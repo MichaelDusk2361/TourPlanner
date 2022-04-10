@@ -31,7 +31,6 @@ namespace TourPlanner.PL.ViewModel.Sub
             ApplyChangesCommand = new RelayCommand((_) =>
             {
                 ApplyChangesEvent?.Invoke(this, EventArgs.Empty);
-                Console.WriteLine(JsonConvert.SerializeObject(SelectedTour));
             });
 
             CancelChangesCommand = new RelayCommand((_) =>

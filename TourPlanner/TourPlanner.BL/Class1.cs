@@ -14,7 +14,7 @@ namespace TourPlanner.BL
 
         public static async void RunAsync()
         {
-            var client = new HttpClient();
+            using var client = new HttpClient();
 
             //https://developer.mapquest.com/documentation/open/directions-api/route/get
             //there is the key, from, to, unit, routeType (transport medium )

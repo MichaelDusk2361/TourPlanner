@@ -22,6 +22,9 @@ namespace TourPlanner.PL
     {
         private void ApplicationStartup(object sender, StartupEventArgs e)
         {
+
+            ConfigFile.Parse("AppConfig.json");
+
             var searchBarViewModel = new SearchBarViewModel();
             var toursViewModel = new ToursViewModel();
             var tourDetailViewModel = new TourDetailViewModel();
@@ -45,7 +48,7 @@ namespace TourPlanner.PL
 
         private static IControllerFactory CreateControllerFactory()
         {
-            var useProductionDatabase = ConfigFile.Parse("AppConfig.json")?["ProductionDatabase"] == "true";
+            var useProductionDatabase = ConfigFile.AppSettings("ProductionDatabase") == "true";
             return useProductionDatabase ? new ControllerFactory() : new ControllerFactoryMock();
         }
     }

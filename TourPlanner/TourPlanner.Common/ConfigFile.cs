@@ -5,12 +5,12 @@ namespace TourPlanner.Common
     public class ConfigFile
     {
 
-        private readonly static Dictionary<string, Dictionary<string, string>> s_configFiles = new();
+        private static Dictionary<string, string>? s_configFile = null;
 
-        public static Dictionary<string, string> Parse(string path)
+        public static void Parse(string path)
         {
-            if(s_configFiles.ContainsKey(path))
-                return s_configFiles[path];
+            if (s_configFile != null)
+                return;
 
             var configFile = File.ReadAllText(path);
             var parsedConfig = JsonConvert.DeserializeObject<Dictionary<string, string>>(configFile);
@@ -18,21 +18,27 @@ namespace TourPlanner.Common
             if (parsedConfig == null)
                 throw new ArgumentException("Could not parse specified config file");
 
-            s_configFiles[path] = parsedConfig;
-
-            return parsedConfig;
+            s_configFile = parsedConfig;
         }
 
-        public static bool TryParse(string path, out Dictionary<string, string>? parsedFile)
+        public static string AppSettings(string key)
+        {
+            if (s_configFile == null)
+                throw new InvalidOperationException("Config file has not been parsed");
+            return s_configFile[key];
+        }
+
+        public static bool TryParse(string path)
         {
             try
             {
-                parsedFile = Parse(path);
+                if(s_configFile == null)
+                    Parse(path);
+
                 return true;
             }
             catch (Exception)
             {
-                parsedFile = null;
                 return false;
             }
         }
