@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using TourPlanner.BL.MapQuestAPI;
 
 namespace TourPlanner.BL
 {
@@ -14,19 +15,28 @@ namespace TourPlanner.BL
 
         public static async void RunAsync()
         {
-            using var client = new HttpClient();
+            //using var client = new HttpClient();
 
-            //https://developer.mapquest.com/documentation/open/directions-api/route/get
-            //there is the key, from, to, unit, routeType (transport medium )
-            var stringTask = client.GetStringAsync("http://www.mapquestapi.com/directions/v2/route?key=bCbFfaipCaFRgjR3va8yWTqkn5HESfQJ&from=Clarendon%20Blvd,Arlington,VA&to=2400%20S%20Glebe%20Rd,%20Arlington,%20VA&unit=k&routeType=pedestrian");
-            var msg = await stringTask;
+            ////https://developer.mapquest.com/documentation/open/directions-api/route/get
+            ////there is the key, from, to, unit, routeType (transport medium )
+            //var stringTask = client.GetStringAsync("http://www.mapquestapi.com/directions/v2/route?key=bCbFfaipCaFRgjR3va8yWTqkn5HESfQJ&from=Clarendon%20Blvd,Arlington,VA&to=2400%20S%20Glebe%20Rd,%20Arlington,%20VA&unit=k&routeType=pedestrian");
+            //var msg = await stringTask;
 
-            var res = JsonConvert.DeserializeObject<JObject>(msg);
-            Console.WriteLine(JsonConvert.SerializeObject(res, Formatting.Indented));
-            Console.WriteLine(res?["route"]?["distance"]);
+            //var res = JsonConvert.DeserializeObject<JObject>(msg);
+            //Console.WriteLine(JsonConvert.SerializeObject(res, Formatting.Indented));
+            //Console.WriteLine(res?["route"]?["distance"]);
             //Unhandled exception. System.Net.Http.HttpRequestException: Response status code does not indicate success: 403 (Forbidden). if key is wrong
 
+            //var request = new MapQuestApiRequest("Clarendon%20Blvd,Arlington,VA", "2400%20S%20Glebe%20Rd,%20Arlington,%20VA", "pedestrian");
+            //await request.ExecuteAsync();
 
+            //var imageBytes = await request.GetRouteImageAsync();
+
+            var res = new MapQuestAPIRequestMock();
+            await res.ExecuteAsync();
+            Console.WriteLine(res.MapQuestResponse);
+
+            //File.WriteAllBytes("NewImage.png", imageBytes);
 
             //if needed parameters for model are there treat it as a sucess if not give some sort of feedback 
             //if one from or two are missing

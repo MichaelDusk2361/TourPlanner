@@ -13,12 +13,12 @@ namespace TourPlanner.BL.Factory
     {
         public TourController CreateTourController()
         {
-            return new(new UnitOfWorkMock());
+            return new(new UnitOfWorkMock(), new MapQuestAPIRequestMock());
         }
 
         public TourLogController CreateTourLogController()
         {
-            return new(new UnitOfWorkMock());
+            return new(new UnitOfWorkMock(), new MapQuestAPIRequestMock());
         }
     }
 }

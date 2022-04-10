@@ -11,7 +11,7 @@ namespace TourPlanner.Model
         public string Start { get; set; } = string.Empty;
         public string Destination { get; set; } = string.Empty;
         public string TransportType { get; set; } = string.Empty;
-        public double TourDistance { get; set; } = 0;
+        public string TourDistance { get; set; } = string.Empty;
         public string EstimatedTime { get; set; } = string.Empty;
         public string ImageUrl { get; set; } = string.Empty;
         public Guid Id { get; set; }

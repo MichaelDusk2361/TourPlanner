@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TourPlanner.BL.MapQuestAPI;
 using TourPlanner.DAL;
 using TourPlanner.Model;
 
@@ -10,7 +11,7 @@ namespace TourPlanner.BL.Controller
 {
     public class TourController : BaseController
     {
-        internal TourController(IUnitOfWork uow) : base(uow)
+        internal TourController(IUnitOfWork uow, IMapQuestAPIRequest mapQuestAPI) : base(uow, mapQuestAPI)
         {
         }
 

@@ -14,7 +14,7 @@ description text null,
 start text null,
 destination text null,
 transporttype text null,
-tourdistance double precision default 0,
+tourdistance text null,
 estimatedtime text null,
 imageurl text null,
 version integer not null default 1);

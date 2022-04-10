@@ -48,8 +48,7 @@ namespace TourPlanner.PL
 
         private static IControllerFactory CreateControllerFactory()
         {
-            var useProductionDatabase = ConfigFile.AppSettings("ProductionDatabase") == "true";
-            return useProductionDatabase ? new ControllerFactory() : new ControllerFactoryMock();
+            return ConfigFile.AppSettings("ProductionEnvironment") == "true" ? new ControllerFactory() : new ControllerFactoryMock();
         }
     }
 }

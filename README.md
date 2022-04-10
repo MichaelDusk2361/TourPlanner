@@ -9,5 +9,5 @@ The file should contain a json of this format:\
  &emsp;"Database": "tourplannerdb",\
  &emsp;"IncludeErrorDetail": "true\false",\
  &emsp;"MapQuestApiKey": "",\
- &emsp;"ProductionDatabase": "true\false"\
+ &emsp;"ProductionEnvironment": "true\false"\
 }
