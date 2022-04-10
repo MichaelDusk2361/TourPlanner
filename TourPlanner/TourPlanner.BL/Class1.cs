@@ -29,7 +29,7 @@ namespace TourPlanner.BL
 
 
             //if needed parameters for model are there treat it as a sucess if not give some sort of feedback 
-            //if one from or to are missing
+            //if one from or two are missing
             //{
             //    "route": {
             //        "routeError": {

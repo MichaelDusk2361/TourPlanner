@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TourPlanner.BL.Controller;
 using TourPlanner.DAL.Mock;
+using TourPlanner.BL.MapQuestAPI;
 
 namespace TourPlanner.BL.Factory
 {
