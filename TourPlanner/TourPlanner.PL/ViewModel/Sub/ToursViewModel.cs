@@ -9,6 +9,7 @@ using System.Windows.Input;
 using TourPlanner.PL.Helper;
 using TourPlanner.Model;
 using TourPlanner.PL.View;
+using Newtonsoft.Json;
 
 namespace TourPlanner.PL.ViewModel.Sub
 {
@@ -38,8 +39,9 @@ namespace TourPlanner.PL.ViewModel.Sub
             set
             {
                 _selectedTour = value;
-                Console.WriteLine(SelectedTour?.Name);
+                Console.WriteLine(JsonConvert.SerializeObject(SelectedTour));
                 SelectedTourChanged?.Invoke(this, EventArgs.Empty);
+                OnPropertyChanged();
             }
         }
 
@@ -48,13 +50,13 @@ namespace TourPlanner.PL.ViewModel.Sub
         public event EventHandler? RemoveTourEvent = null;
 
 
-        private ObservableCollection<Tour>? _data;
+        private ObservableCollection<Tour>? _allTours;
         public ObservableCollection<Tour> AllTours
         {
-            get => _data ??= new ObservableCollection<Tour>();
+            get => _allTours ??= new ObservableCollection<Tour>();
             set
             {
-                _data = value;
+                _allTours = value;
                 OnPropertyChanged();
             }
         }

@@ -11,8 +11,10 @@ namespace TourPlanner.BL.MapQuestAPI
     {
         public JObject Response { get; private set; }
 
-        public MapQuestAPIResponseParser(JObject response)
+        public MapQuestAPIResponseParser(JObject? response)
         {
+            if(response == null)
+                throw new ArgumentNullException(nameof(response));
             Response = response;
         }
 

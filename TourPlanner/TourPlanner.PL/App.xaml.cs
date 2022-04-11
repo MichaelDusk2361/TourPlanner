@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,6 +25,8 @@ namespace TourPlanner.PL
         {
 
             ConfigFile.Parse("AppConfig.json");
+
+            Directory.CreateDirectory("Maps");
 
             var searchBarViewModel = new SearchBarViewModel();
             var toursViewModel = new ToursViewModel();

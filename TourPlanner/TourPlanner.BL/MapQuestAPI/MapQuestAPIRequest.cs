@@ -26,7 +26,7 @@ namespace TourPlanner.BL.MapQuestAPI
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e);
             }
         }
 
@@ -47,7 +47,7 @@ namespace TourPlanner.BL.MapQuestAPI
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e);
             }
             return Array.Empty<byte>();
         }

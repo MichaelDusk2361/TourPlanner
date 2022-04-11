@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -23,6 +25,7 @@ namespace TourPlanner.PL.ViewModel.Sub
             {
                 _selectedTour = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(SourceUri));
             }
         }
 
@@ -37,6 +40,18 @@ namespace TourPlanner.PL.ViewModel.Sub
             {
                 CancelChangesEvent?.Invoke(this, EventArgs.Empty);
             });
+        }
+
+        public string? SourceUri
+        {
+            get
+            {
+                return Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), SelectedTour?.ImageUrl);
+            }
+            set 
+            {
+                OnPropertyChanged();
+            }
         }
 
         public event EventHandler? ApplyChangesEvent = null;

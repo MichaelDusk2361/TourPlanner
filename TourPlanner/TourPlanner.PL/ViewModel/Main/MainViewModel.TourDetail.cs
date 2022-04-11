@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using TourPlanner.PL.ViewModel.Sub;
 
 namespace TourPlanner.PL.ViewModel.Main
 {
@@ -26,15 +29,19 @@ namespace TourPlanner.PL.ViewModel.Main
 
         private void AddApplyChangesEvent()
         {
-            TourDetail.ApplyChangesEvent += (s, e) =>
+            TourDetail.ApplyChangesEvent += async (s, e) =>
             {
-                Tours.SelectedTour = TourDetail.SelectedTour;
-                using var tourController = ControllerFactory.CreateTourController();
-                if (Tours.SelectedTour != null)
+                if (TourDetail.SelectedTour != null)
                 {
-                    tourController.UpdateTour(Tours.SelectedTour);
-                    Tours.AllTours = new(tourController.GetAllTours());
+                    using (var tourController = ControllerFactory.CreateTourController())
+                    { 
+                        //maybe only make api call if from, to or transport type have changed? 
+                        await tourController.RequestAndUpdateTour(TourDetail.SelectedTour);
+                    };
+                    LoadTours();
+                    Tours.SelectedTour = Tours.AllTours.Where(x => x.Id == TourDetail.SelectedTour.Id).First();
                 }
+
             };
         }
     }

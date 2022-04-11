@@ -1,4 +1,5 @@
-﻿using TourPlanner.BL.Factory;
+﻿using System;
+using TourPlanner.BL.Factory;
 using TourPlanner.PL.ViewModel.Sub;
 
 namespace TourPlanner.PL.ViewModel.Main
@@ -33,6 +34,11 @@ namespace TourPlanner.PL.ViewModel.Main
                 ToursSetup();
             if (TourDetail != null)
                 TourDetailSetup();
+            if (MenuBar != null)
+                MenuBarSetup();
+            if (Logs != null)
+                LogsSetup();
         }
+
     }
 }

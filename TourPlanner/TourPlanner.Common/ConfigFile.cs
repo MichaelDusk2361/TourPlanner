@@ -2,7 +2,7 @@
 
 namespace TourPlanner.Common
 {
-    public class ConfigFile
+    public static class ConfigFile
     {
 
         private static Dictionary<string, string>? s_configFile = null;
