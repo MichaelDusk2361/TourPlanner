@@ -27,16 +27,27 @@ namespace TourPlanner.BL
             //Console.WriteLine(res?["route"]?["distance"]);
             //Unhandled exception. System.Net.Http.HttpRequestException: Response status code does not indicate success: 403 (Forbidden). if key is wrong
 
-            //var request = new MapQuestApiRequest("Clarendon%20Blvd,Arlington,VA", "2400%20S%20Glebe%20Rd,%20Arlington,%20VA", "pedestrian");
-            //await request.ExecuteAsync();
+            //var request = new MapQuestAPIRequest();
+            //await request.ExecuteAsync("Clarendon%20Blvd,Arlington,VA", "2400%20S%20Glebe%20Rd,%20Arlington,%20VA", "pedestrian");
 
             //var imageBytes = await request.GetRouteImageAsync();
 
-            var res = new MapQuestAPIRequestMock();
-            await res.ExecuteAsync();
-            Console.WriteLine(res.MapQuestResponse);
+            //using var FileStream = new StreamWriter("mockdata.txt");
 
-            //File.WriteAllBytes("NewImage.png", imageBytes);
+            //var counter = 0;
+            //foreach (var item in imageBytes)
+            //{
+            //    if(counter % 20 == 0)
+            //        FileStream.Write("\n");
+            //    FileStream.Write($"{item}, ");
+            //    counter++;
+            //}
+
+            //var res = new MapQuestAPIRequestMock();
+            //await res.ExecuteAsync();
+            //Console.WriteLine(res.MapQuestResponse);
+
+            //File.WriteAllBytes("NewImage.png", await res.GetRouteImageAsync());
 
             //if needed parameters for model are there treat it as a sucess if not give some sort of feedback 
             //if one from or two are missing
