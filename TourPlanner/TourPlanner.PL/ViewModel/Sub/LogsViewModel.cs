@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -11,11 +13,40 @@ namespace TourPlanner.PL.ViewModel.Sub
 {
     public class LogsViewModel : BaseViewModel
     {
-        public IEnumerable<TourLog> Data { get; set; }
+
+        private TourLog? _selectedTourLog;
+        public TourLog? SelectedTourLog
+        {
+            get
+            {
+                return _selectedTourLog;
+            }
+            set 
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(value));
+                _selectedTourLog = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        private ObservableCollection<TourLog>? _tourLogs;
+        public ObservableCollection<TourLog>? TourLogs
+        {
+            get
+            {
+                return _tourLogs;
+            }
+            set
+            {
+                _tourLogs = value;
+                OnPropertyChanged();
+            }
+        }
 
         public LogsViewModel()
         {
-            Data = new List<TourLog>()
+            TourLogs = new()
             {
                 new(),
                 new(),
@@ -24,5 +55,6 @@ namespace TourPlanner.PL.ViewModel.Sub
                 new(),
             };
         }
+
     }
 }

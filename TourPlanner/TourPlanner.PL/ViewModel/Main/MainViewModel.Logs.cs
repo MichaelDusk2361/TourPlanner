@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TourPlanner.Model;
 
 namespace TourPlanner.PL.ViewModel.Main
 {
@@ -10,7 +11,7 @@ namespace TourPlanner.PL.ViewModel.Main
     {
         private void LogsSetup()
         {
-
+            
         }
 
     }

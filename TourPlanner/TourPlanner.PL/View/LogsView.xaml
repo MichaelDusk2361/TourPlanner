@@ -10,13 +10,13 @@
 
     <StackPanel>
         <TextBlock>Logs of tour goes here</TextBlock>
-        <DataGrid AutoGenerateColumns="False" Margin="5,5,5,5" ItemsSource="{Binding Path=Data}">
+        <DataGrid AutoGenerateColumns="False" SelectedItem="{Binding SelectedTourLog}" Margin="5,5,5,5" ItemsSource="{Binding Path=TourLogs}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date" Binding="{Binding Path=Date}" />
-                <DataGridTextColumn Header="Comment" Binding="{Binding Path=Comment}"/>
                 <DataGridTextColumn Header="Difficulty" Binding="{Binding Path=Difficulty}"/>
                 <DataGridTextColumn Header="Rating" Binding="{Binding Path=Rating}"/>
-                <DataGridTextColumn Width="*" Header="Duration" Binding="{Binding Path=CompletionTime}"/>
+                <DataGridTextColumn Header="Duration" Binding="{Binding Path=CompletionTime}"/>
+                <DataGridTextColumn Width="*" Header="Comment" Binding="{Binding Path=Comment}"/>
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>
