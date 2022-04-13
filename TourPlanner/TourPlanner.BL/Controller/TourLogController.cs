@@ -6,7 +6,6 @@ namespace TourPlanner.BL.Controller
 {
     public class TourLogController : BaseController
     {
-
         internal TourLogController(IUnitOfWork uow, IMapQuestAPIRequest mapQuestAPI) : base(uow, mapQuestAPI)
         {
         }

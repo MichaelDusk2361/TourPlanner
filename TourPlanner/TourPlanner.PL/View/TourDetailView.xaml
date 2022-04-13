@@ -29,6 +29,8 @@
                             <RowDefinition Height="auto"></RowDefinition>
                             <RowDefinition Height="auto"></RowDefinition>
                             <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0" Grid.Column="0">Name</TextBlock>
@@ -51,6 +53,12 @@
 
                         <TextBlock Grid.Row="6" Grid.Column="0">Description</TextBlock>
                         <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SelectedTour.Description}" ></TextBox>
+                        
+                        <TextBlock Grid.Row="7" Grid.Column="0">Child-friendliness</TextBlock>
+                        <TextBox Grid.Row="7" Grid.Column="1" IsReadOnly="True" Text="{Binding ChildFriendliness}" ></TextBox>
+
+                        <TextBlock Grid.Row="8" Grid.Column="0">Popularity</TextBlock>
+                        <TextBox Grid.Row="8" Grid.Column="1" IsReadOnly="True" Text="{Binding Popularity}" ></TextBox>
                     </Grid>
                     <Button Command="{Binding ApplyChangesCommand}">Apply</Button>
                     <Button Command="{Binding CancelChangesCommand}">Cancel</Button>

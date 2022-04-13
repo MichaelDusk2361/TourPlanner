@@ -18,9 +18,8 @@ namespace TourPlanner.PL.ViewModel.Main
         private void SearchTours(string searchText)
         {
             using var tourController = ControllerFactory.CreateTourController();
-            var res = from e in tourController.GetAllTours() where e.Name.Contains(searchText) select e;
+            var res = tourController.Search(searchText);
             Tours.AllTours = new(res);
-            Console.WriteLine($"{searchText} was searched");
         }
     }
 }

@@ -19,12 +19,13 @@ namespace TourPlanner.PL.ViewModel.Sub
             }
             set
             {
-                Console.WriteLine(JsonConvert.SerializeObject(value));
                 _selectedTourLog = value;
                 OnPropertyChanged();
             }
         }
 
+        public event EventHandler? CalculateChildFriendlinessEvent;
+        public event EventHandler? CalculatePopularityEvent;
 
         public ICommand AddTourLogCommand { get; }
         public ICommand RemoveTourLogCommand { get; }
@@ -51,13 +52,20 @@ namespace TourPlanner.PL.ViewModel.Sub
             AddTourLogCommand = new RelayCommand((_) =>
             {
                 AddTourLogEvent?.Invoke(this, EventArgs.Empty);
+                ReevaluateCalculations();
             });
 
             RemoveTourLogCommand = new RelayCommand((_) =>
             {
                 RemoveTourLogEvent?.Invoke(this, EventArgs.Empty);
+                ReevaluateCalculations();
             });
         }
 
+        internal void ReevaluateCalculations()
+        {
+            CalculateChildFriendlinessEvent?.Invoke(this, EventArgs.Empty);
+            CalculatePopularityEvent?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace TourPlanner.PL.ViewModel.Main
             AddRemoveTourEvent();
         }
 
+
         private void AddRemoveTourEvent()
         {
             Tours.RemoveTourEvent += (s, e) =>
@@ -51,6 +52,7 @@ namespace TourPlanner.PL.ViewModel.Main
                     TourDetail.SelectedTour = new(Tours.SelectedTour);
                     using var tourLogController = ControllerFactory.CreateTourLogController();
                     Logs.TourLogs = new(tourLogController.GetTourLogsForTour(Tours.SelectedTour));
+                    Logs.ReevaluateCalculations();
                 }
             };
         }

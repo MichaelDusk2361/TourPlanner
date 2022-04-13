@@ -21,10 +21,24 @@ namespace TourPlanner.BL.Controller
             if (File.Exists(tour.ImageUrl))
                 File.Delete(tour.ImageUrl);
         }
+        
+        public List<Tour> Search(string searchText)
+        {
+            throw new NotImplementedException();
+        }
 
         public void AddTour(Tour tour)
         {
             _uow.TourRepository.Insert(tour);
+        }
+        public int? CalculatePopularity()
+        {
+            return 2;
+        }
+
+        public int? CalculateChildFriendliness()
+        {
+            return 1;
         }
 
         public async Task RequestAndUpdateTour(Tour tour)
@@ -48,6 +62,7 @@ namespace TourPlanner.BL.Controller
             //update tour in db
             _uow.TourRepository.Update(tour);
         }
+
 
         private static string CreateImageUrl(Tour tour)
         {

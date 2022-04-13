@@ -8,6 +8,32 @@ namespace TourPlanner.PL.ViewModel.Main
         {
             AddCancelChangesEvent();
             AddApplyChangesEvent();
+            AddCalculateChildFriendlinessEvent();
+            AddCalculatePopularityEvent();
+        }
+
+        private void AddCalculatePopularityEvent()
+        {
+            Logs.CalculatePopularityEvent += (sender, args) =>
+            {
+                if (Tours.SelectedTour != null)
+                {
+                    using var tourController = ControllerFactory.CreateTourController();
+                    TourDetail.Popularity = tourController.CalculateChildFriendliness();
+                }
+            };
+        }
+
+        private void AddCalculateChildFriendlinessEvent()
+        {
+            Logs.CalculateChildFriendlinessEvent += (sender, args) =>
+            {
+                if (Tours.SelectedTour != null)
+                {
+                    using var tourController = ControllerFactory.CreateTourController();
+                    TourDetail.ChildFriendliness = tourController.CalculatePopularity();
+                }
+            };
         }
 
         private void AddCancelChangesEvent()
@@ -27,13 +53,11 @@ namespace TourPlanner.PL.ViewModel.Main
                 {
                     using (var tourController = ControllerFactory.CreateTourController())
                     {
-                        //maybe only make api call if from, to or transport type have changed? 
                         await tourController.RequestAndUpdateTour(TourDetail.SelectedTour);
                     };
                     LoadTours();
                     Tours.SelectedTour = Tours.AllTours.Where(x => x.Id == TourDetail.SelectedTour.Id).First();
                 }
-
             };
         }
     }

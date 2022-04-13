@@ -51,6 +51,33 @@ namespace TourPlanner.PL.ViewModel.Sub
 
         public event EventHandler? ApplyChangesEvent = null;
         public event EventHandler? CancelChangesEvent = null;
+        private int? _childFriendliness;
+        public int? ChildFriendliness
+        {
+            get
+            {
+                return _childFriendliness;
+            }
+            set
+            {
+                _childFriendliness = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int? _popularity;
+        public int? Popularity
+        {
+            get
+            {
+                return _popularity;
+            }
+            set
+            {
+                _popularity = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ICommand ApplyChangesCommand { get; }
         public ICommand CancelChangesCommand { get; }

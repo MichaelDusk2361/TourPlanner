@@ -20,8 +20,6 @@
         </DataGrid>-->
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel>
-                <Button Command="{Binding AddTourLogCommand}" >Add Tour</Button>
-                <Button Command="{Binding RemoveTourLogCommand}" >Remove Tour</Button>
                 <ListView x:Name="tourList" SelectedItem="{Binding SelectedTourLog}" ItemsSource="{Binding TourLogs}">
                     <ListView.View>
                         <GridView>
@@ -33,6 +31,18 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                </Grid>
+                <Button Command="{Binding AddTourLogCommand}" >Add Tour</Button>
+                <Button Command="{Binding RemoveTourLogCommand}" >Remove Tour</Button>
             </StackPanel>
         </ScrollViewer>
     </StackPanel>
