@@ -1,4 +1,5 @@
-﻿using TourPlanner.DAL.Context;
+﻿using TourPlanner.Common.Logging;
+using TourPlanner.DAL.Context;
 using TourPlanner.DAL.Repository;
 using TourPlanner.Model;
 
@@ -9,6 +10,8 @@ namespace TourPlanner.DAL
 
         private readonly TourPlannerContext _context;
         private static readonly Semaphore s_semaphore = new(1, 1);
+
+        private static readonly ILoggerWrapper s_logger = LoggerFactory.GetLogger();
 
         private GenericRepository<Tour>? _tourRepository = null;
         public GenericRepository<Tour> TourRepository
@@ -67,7 +70,7 @@ namespace TourPlanner.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                s_logger.Error($"exception during db save {e}");
                 return false;
             }
             return true;

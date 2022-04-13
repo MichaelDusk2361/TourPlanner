@@ -35,6 +35,12 @@ namespace TourPlanner.Common.Logging
         {
             _logger.Debug(message);
         }
+
+        public void Info(string message)
+        {
+            _logger.Info(message);
+        }
+
         public void Warn(string message)
         {
             _logger.Warn(message);

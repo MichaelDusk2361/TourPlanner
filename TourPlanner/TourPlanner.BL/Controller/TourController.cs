@@ -22,10 +22,26 @@ namespace TourPlanner.BL.Controller
             if (File.Exists(tour.ImageUrl))
                 File.Delete(tour.ImageUrl);
         }
-        
+
         public List<Tour> Search(string searchText)
         {
-            throw new NotImplementedException();
+            s_logger.Debug($"'{searchText}' was searched");
+            var res = (from tour in _uow.TourRepository.Get() where TourContainsString(tour, searchText) || TourLogContainString(tour, searchText) select tour).ToList();
+            return res ?? new();
+        }
+
+        private bool TourLogContainString(Tour tour, string searchText)
+        {
+            return _uow.TourLogRepository.Get(log => log.TourId == tour.Id).Any(log => log.Comment.Contains(searchText, StringComparison.CurrentCultureIgnoreCase));
+        }
+
+        private static bool TourContainsString(Tour tour, string searchText)
+        {
+            return tour.Start.Contains(searchText, StringComparison.CurrentCultureIgnoreCase) ||
+                tour.TransportType.Contains(searchText, StringComparison.CurrentCultureIgnoreCase) ||
+                tour.Destination.Contains(searchText, StringComparison.CurrentCultureIgnoreCase) ||
+                tour.Description.Contains(searchText, StringComparison.CurrentCultureIgnoreCase) ||
+                tour.Name.Contains(searchText, StringComparison.CurrentCultureIgnoreCase);
         }
 
         public void AddTour(Tour tour)
@@ -67,6 +83,12 @@ namespace TourPlanner.BL.Controller
             var responseParser = new MapQuestAPIResponseParser(_mapQuestAPI.MapQuestResponse);
             tour.TourDistance = responseParser.GetDistance() ?? "";
             tour.EstimatedTime = responseParser.GetTime() ?? "";
+
+            if (tour.EstimatedTime == "")
+                s_logger.Error("Could not get estimated time from open map");
+
+            if (tour.TourDistance == "")
+                s_logger.Error("Could not get tour distance from open map");
 
             //update tour in db
             _uow.TourRepository.Update(tour);

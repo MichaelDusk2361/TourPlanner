@@ -8,6 +8,7 @@ namespace TourPlanner.Common.Logging
 {
     public interface ILoggerWrapper
     {
+        void Info(string message);
         void Debug(string message);
         void Error(string message);
         void Fatal(string message);

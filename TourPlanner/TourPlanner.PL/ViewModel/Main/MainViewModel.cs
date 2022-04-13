@@ -1,4 +1,5 @@
 ﻿using TourPlanner.BL.Factory;
+using TourPlanner.Common.Logging;
 using TourPlanner.PL.ViewModel.Sub;
 
 namespace TourPlanner.PL.ViewModel.Main
@@ -12,6 +13,8 @@ namespace TourPlanner.PL.ViewModel.Main
         public LogsViewModel Logs { get; set; }
 
         public IControllerFactory ControllerFactory { get; set; }
+
+        private static readonly ILoggerWrapper s_logger = LoggerFactory.GetLogger(); 
 
         public MainViewModel(SearchBarViewModel searchBar, ToursViewModel tours, TourDetailViewModel tourDetail, MenuBarViewModel menuBar, LogsViewModel logs, IControllerFactory controllerFactory)
         {

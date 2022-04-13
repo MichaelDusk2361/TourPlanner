@@ -33,7 +33,6 @@ namespace TourPlanner.PL.ViewModel.Sub
             set
             {
                 _selectedTour = value;
-                Console.WriteLine(JsonConvert.SerializeObject(SelectedTour));
                 SelectedTourChanged?.Invoke(this, EventArgs.Empty);
                 OnPropertyChanged();
             }

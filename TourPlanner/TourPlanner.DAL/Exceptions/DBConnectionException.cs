@@ -1,6 +1,6 @@
 ﻿namespace TourPlanner.DAL.Exceptions
 {
-    class DBConnectionException : Exception
+    public class DBConnectionException : Exception
     {
 
         public DBConnectionException() { }

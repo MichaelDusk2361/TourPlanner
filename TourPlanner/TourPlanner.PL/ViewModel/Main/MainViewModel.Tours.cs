@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace TourPlanner.PL.ViewModel.Main
 {
@@ -26,6 +27,8 @@ namespace TourPlanner.PL.ViewModel.Main
                 }
                 LoadTours();
                 Tours.SelectedTour = null;
+
+                s_logger.Info($"User deleted tour");
             };
         }
 
@@ -33,6 +36,7 @@ namespace TourPlanner.PL.ViewModel.Main
         {
             Tours.AddTourEvent += (s, e) =>
             {
+                s_logger.Info($"User added new tour");
                 using var tourController = ControllerFactory.CreateTourController();
                 tourController.AddTour(new()
                 {
@@ -49,6 +53,7 @@ namespace TourPlanner.PL.ViewModel.Main
             {
                 if (Tours.SelectedTour != null)
                 {
+                    s_logger.Debug($"User selected different tour: {Tours.SelectedTour.Id}");
                     TourDetail.SelectedTour = new(Tours.SelectedTour);
                     using var tourLogController = ControllerFactory.CreateTourLogController();
                     Logs.TourLogs = new(tourLogController.GetTourLogsForTour(Tours.SelectedTour));

@@ -1,4 +1,5 @@
-﻿using TourPlanner.DAL.Repository;
+﻿using TourPlanner.Common.Logging;
+using TourPlanner.DAL.Repository;
 using TourPlanner.Model;
 
 namespace TourPlanner.DAL.Mock
@@ -8,6 +9,7 @@ namespace TourPlanner.DAL.Mock
         private readonly TourPlannerContextMock _context;
 
         private GenericRepository<Tour>? _tourRepository = null;
+        private static readonly ILoggerWrapper s_logger = LoggerFactory.GetLogger();
         public GenericRepository<Tour> TourRepository
         {
             get
@@ -50,7 +52,7 @@ namespace TourPlanner.DAL.Mock
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                s_logger.Error($"exception during mock db save {e}");
                 return false;
             }
         }

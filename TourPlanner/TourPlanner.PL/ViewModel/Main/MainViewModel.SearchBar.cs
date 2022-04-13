@@ -20,6 +20,11 @@ namespace TourPlanner.PL.ViewModel.Main
             using var tourController = ControllerFactory.CreateTourController();
             var res = tourController.Search(searchText);
             Tours.AllTours = new(res);
+            Tours.SelectedTour = null;
+            TourDetail.SelectedTour = null;
+            Logs.TourLogs = new();
+            TourDetail.ChildFriendliness = null;
+            TourDetail.Popularity = null;
         }
     }
 }

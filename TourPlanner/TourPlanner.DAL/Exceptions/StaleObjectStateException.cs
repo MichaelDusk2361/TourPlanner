@@ -1,6 +1,6 @@
 ﻿namespace TourPlanner.DAL.Exceptions
 {
-    class StaleObjectStateException : Exception
+    public class StaleObjectStateException : Exception
     {
         public StaleObjectStateException() { }
 

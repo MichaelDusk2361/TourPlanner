@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using TourPlanner.Common.Exceptions;
 
 namespace TourPlanner.Common
 {
@@ -16,7 +17,7 @@ namespace TourPlanner.Common
             var parsedConfig = JsonConvert.DeserializeObject<Dictionary<string, string>>(configFile);
 
             if (parsedConfig == null)
-                throw new ArgumentException("Could not parse specified config file");
+                throw new InvalidConfigFileFormatException("Format of config file is invalid");
 
             s_configFile = parsedConfig;
         }

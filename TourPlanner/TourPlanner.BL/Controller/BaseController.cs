@@ -1,4 +1,5 @@
 ﻿using TourPlanner.BL.MapQuestAPI;
+using TourPlanner.Common.Logging;
 using TourPlanner.DAL;
 
 namespace TourPlanner.BL.Controller
@@ -7,6 +8,7 @@ namespace TourPlanner.BL.Controller
     {
         protected readonly IUnitOfWork _uow;
         protected readonly IMapQuestAPIRequest _mapQuestAPI;
+        protected static readonly ILoggerWrapper s_logger = LoggerFactory.GetLogger();
 
         public BaseController(IUnitOfWork uow, IMapQuestAPIRequest mapQuestAPI)
         {
@@ -24,7 +26,7 @@ namespace TourPlanner.BL.Controller
                 {
                     if (!_uow.TrySave())
                     {
-                        Console.WriteLine("Error during DB save");
+                        s_logger.Error("Error during DB save");
                     }
                     _uow.Dispose();
                 }

@@ -1,12 +1,15 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using TourPlanner.Common;
+using TourPlanner.Common.Logging;
 
 namespace TourPlanner.BL.MapQuestAPI
 {
     internal class MapQuestAPIRequest : IMapQuestAPIRequest
     {
         public JObject? MapQuestResponse { get; private set; } = null;
+
+        private static readonly ILoggerWrapper s_logger = LoggerFactory.GetLogger();
 
         public async Task ExecuteAsync(string from, string to, string transportMedium)
         {
@@ -19,9 +22,9 @@ namespace TourPlanner.BL.MapQuestAPI
 
                 MapQuestResponse = JsonConvert.DeserializeObject<JObject>(msg);
             }
-            catch (Exception e)
+            catch (HttpRequestException e)
             {
-                Console.WriteLine(e);
+                s_logger.Error($"exception from directions mapquestapirequest {e}");
             }
         }
 
@@ -40,9 +43,9 @@ namespace TourPlanner.BL.MapQuestAPI
                 var res = await client.GetByteArrayAsync(url);
                 return res;
             }
-            catch (Exception e)
+            catch (HttpRequestException e)
             {
-                Console.WriteLine(e);
+                s_logger.Error($"exception from openmap mapquestapirequest {e}");
             }
             return Array.Empty<byte>();
         }

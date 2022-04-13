@@ -10,13 +10,12 @@ namespace TourPlanner.PL.ViewModel.Sub
 
         public ICommand SearchCommand { get; }
 
-        private string? _searchText = null;
+        private string? _searchText = string.Empty;
         public string? SearchText
         {
             get => _searchText;
             set
             {
-                Console.WriteLine("search text set");
                 _searchText = value;
                 OnPropertyChanged();
             }
@@ -26,11 +25,7 @@ namespace TourPlanner.PL.ViewModel.Sub
         {
             SearchCommand = new RelayCommand((_) =>
             {
-                Console.WriteLine($"invoked serach text command. Text: {SearchText}");
-                if (SearchEvent == null)
-                    Console.WriteLine("event is null");
-                else
-                    SearchEvent.Invoke(this, EventArgs.Empty);
+                 SearchEvent?.Invoke(this, EventArgs.Empty);
             });
         }
     }
