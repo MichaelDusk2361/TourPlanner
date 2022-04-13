@@ -1,13 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
+using System.Windows.Input;
 using TourPlanner.Model;
+using TourPlanner.PL.Helper;
 
 namespace TourPlanner.PL.ViewModel.Sub
 {
@@ -21,7 +17,7 @@ namespace TourPlanner.PL.ViewModel.Sub
             {
                 return _selectedTourLog;
             }
-            set 
+            set
             {
                 Console.WriteLine(JsonConvert.SerializeObject(value));
                 _selectedTourLog = value;
@@ -30,8 +26,14 @@ namespace TourPlanner.PL.ViewModel.Sub
         }
 
 
-        private ObservableCollection<TourLog>? _tourLogs;
-        public ObservableCollection<TourLog>? TourLogs
+        public ICommand AddTourLogCommand { get; }
+        public ICommand RemoveTourLogCommand { get; }
+
+        public event EventHandler? AddTourLogEvent;
+        public event EventHandler? RemoveTourLogEvent;
+
+        private ObservableCollection<TourLog> _tourLogs = new();
+        public ObservableCollection<TourLog> TourLogs
         {
             get
             {
@@ -46,14 +48,15 @@ namespace TourPlanner.PL.ViewModel.Sub
 
         public LogsViewModel()
         {
-            TourLogs = new()
+            AddTourLogCommand = new RelayCommand((_) =>
             {
-                new(),
-                new(),
-                new(),
-                new(),
-                new(),
-            };
+                AddTourLogEvent?.Invoke(this, EventArgs.Empty);
+            });
+
+            RemoveTourLogCommand = new RelayCommand((_) =>
+            {
+                RemoveTourLogEvent?.Invoke(this, EventArgs.Empty);
+            });
         }
 
     }

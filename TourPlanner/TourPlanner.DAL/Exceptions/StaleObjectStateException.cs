@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TourPlanner.DAL.Exceptions {
-    class StaleObjectStateException : Exception {
+﻿namespace TourPlanner.DAL.Exceptions
+{
+    class StaleObjectStateException : Exception
+    {
         public StaleObjectStateException() { }
 
         public StaleObjectStateException(string message) : base(message) { }

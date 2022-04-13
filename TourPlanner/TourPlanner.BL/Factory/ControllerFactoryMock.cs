@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TourPlanner.BL.Controller;
-using TourPlanner.DAL.Mock;
+﻿using TourPlanner.BL.Controller;
 using TourPlanner.BL.MapQuestAPI;
+using TourPlanner.DAL.Mock;
 
 namespace TourPlanner.BL.Factory
 {

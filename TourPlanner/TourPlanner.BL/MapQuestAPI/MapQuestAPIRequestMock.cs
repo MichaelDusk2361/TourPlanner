@@ -1,10 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TourPlanner.BL.MapQuestAPI
 {
@@ -24,7 +19,7 @@ namespace TourPlanner.BL.MapQuestAPI
             if (MapQuestResponse == null)
                 throw new InvalidOperationException("Image cant be fetched before route data has been received");
 
-            return Task.FromResult(new byte[] 
+            return Task.FromResult(new byte[]
             {
                 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 170,
                 0, 0, 0, 30, 8, 6, 0, 0, 0, 188, 45, 133, 225, 0, 0, 21, 36, 73, 68, 65,

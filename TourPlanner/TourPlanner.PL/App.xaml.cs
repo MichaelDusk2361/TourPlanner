@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows;
 using TourPlanner.BL.Factory;
 using TourPlanner.Common;
-using TourPlanner.PL.ViewModel;
 using TourPlanner.PL.ViewModel.Main;
 using TourPlanner.PL.ViewModel.Sub;
 

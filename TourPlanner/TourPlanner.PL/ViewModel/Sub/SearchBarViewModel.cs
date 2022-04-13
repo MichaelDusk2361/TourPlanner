@@ -27,9 +27,9 @@ namespace TourPlanner.PL.ViewModel.Sub
             SearchCommand = new RelayCommand((_) =>
             {
                 Console.WriteLine($"invoked serach text command. Text: {SearchText}");
-                if(SearchEvent == null)
+                if (SearchEvent == null)
                     Console.WriteLine("event is null");
-                else 
+                else
                     SearchEvent.Invoke(this, EventArgs.Empty);
             });
         }

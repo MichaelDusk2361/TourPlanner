@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TourPlanner.DAL.Context;
-using TourPlanner.DAL.Repository;
+﻿using TourPlanner.DAL.Repository;
 using TourPlanner.Model;
 
 namespace TourPlanner.DAL.Mock

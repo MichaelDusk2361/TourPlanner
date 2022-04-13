@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using TourPlanner.PL.ViewModel.Sub;
+﻿using System.Linq;
 
 namespace TourPlanner.PL.ViewModel.Main
 {
@@ -33,7 +26,7 @@ namespace TourPlanner.PL.ViewModel.Main
                 if (TourDetail.SelectedTour != null)
                 {
                     using (var tourController = ControllerFactory.CreateTourController())
-                    { 
+                    {
                         //maybe only make api call if from, to or transport type have changed? 
                         await tourController.RequestAndUpdateTour(TourDetail.SelectedTour);
                     };

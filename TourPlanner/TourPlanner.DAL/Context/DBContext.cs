@@ -1,13 +1,8 @@
-﻿using TourPlanner.DAL.ORM;
-using TourPlanner.DAL.Exceptions;
-using TourPlanner.Model;
-using Npgsql;
-using System;
-using System.Collections.Generic;
+﻿using Npgsql;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TourPlanner.DAL.Exceptions;
+using TourPlanner.DAL.ORM;
+using TourPlanner.Model;
 
 namespace TourPlanner.DAL.Context
 {

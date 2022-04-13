@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TourPlanner.BL.MapQuestAPI;
+﻿using TourPlanner.BL.MapQuestAPI;
 using TourPlanner.DAL;
+using TourPlanner.Model;
 
 namespace TourPlanner.BL.Controller
 {
@@ -15,7 +11,19 @@ namespace TourPlanner.BL.Controller
         {
         }
 
+        public void AddTourLog(TourLog tourLog)
+        {
+            _uow.TourLogRepository.Insert(tourLog);
+        }
 
+        public List<TourLog> GetTourLogsForTour(Tour tour)
+        {
+            return _uow.TourLogRepository.Get(tourLog => tourLog.TourId == tour.Id);
+        }
 
+        public void RemoveTourLog(TourLog tourLog)
+        {
+            _uow.TourLogRepository.Delete(tourLog);
+        }
     }
 }

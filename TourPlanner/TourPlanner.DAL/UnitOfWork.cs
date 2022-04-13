@@ -1,13 +1,6 @@
 ﻿using TourPlanner.DAL.Context;
-using TourPlanner.DAL.Exceptions;
 using TourPlanner.DAL.Repository;
 using TourPlanner.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace TourPlanner.DAL
 {

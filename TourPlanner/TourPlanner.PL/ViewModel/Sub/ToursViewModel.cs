@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
-using TourPlanner.PL.Helper;
 using TourPlanner.Model;
-using TourPlanner.PL.View;
-using Newtonsoft.Json;
+using TourPlanner.PL.Helper;
 
 namespace TourPlanner.PL.ViewModel.Sub
 {

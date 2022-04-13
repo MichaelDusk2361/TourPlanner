@@ -1,5 +1,4 @@
-﻿using System;
-using TourPlanner.BL.Factory;
+﻿using TourPlanner.BL.Factory;
 using TourPlanner.PL.ViewModel.Sub;
 
 namespace TourPlanner.PL.ViewModel.Main

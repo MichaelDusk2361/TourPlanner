@@ -1,10 +1,5 @@
-﻿using TourPlanner.DAL.ORM;
+﻿using TourPlanner.Common;
 using TourPlanner.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using TourPlanner.Common;
 
 namespace TourPlanner.DAL.Context
 {

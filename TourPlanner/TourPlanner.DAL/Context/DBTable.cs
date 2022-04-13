@@ -1,45 +1,49 @@
-﻿using TourPlanner.Model;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+using TourPlanner.Model;
 
-namespace TourPlanner.DAL.Context {
-    public class DBTable<TEntity> : IQueryable<TEntity> where TEntity : class, ITEntity{
+namespace TourPlanner.DAL.Context
+{
+    public class DBTable<TEntity> : IQueryable<TEntity> where TEntity : class, ITEntity
+    {
 
         public List<TEntity> Entities { get; private set; } = new();
 
-        public DBTable(List<TEntity> entities) {
+        public DBTable(List<TEntity> entities)
+        {
             Entities = entities;
         }
 
-        public TEntity? Find(Guid id) {
-            foreach (var entity in Entities) {
+        public TEntity? Find(Guid id)
+        {
+            foreach (var entity in Entities)
+            {
                 if (entity.Id == id)
                     return entity;
             }
             return null;
         }
 
-        public void Update(TEntity entityToUpdate) {
+        public void Update(TEntity entityToUpdate)
+        {
             var destination = Find(entityToUpdate.Id);
             if (destination == null)
                 return;
             var sourceProperties = typeof(TEntity).GetProperties();
-            foreach (var sourceProp in sourceProperties) {
+            foreach (var sourceProp in sourceProperties)
+            {
                 var targetProp = entityToUpdate.GetType().GetProperty(sourceProp.Name);
                 targetProp?.SetValue(destination, sourceProp.GetValue(entityToUpdate, null), null);
             }
         }
 
-        public void Delete(TEntity entityToDelete) {
+        public void Delete(TEntity entityToDelete)
+        {
             Entities.Remove(entityToDelete);
         }
 
-        public void Add(TEntity entity) {
+        public void Add(TEntity entity)
+        {
             Entities.Add(entity);
         }
 
@@ -49,11 +53,13 @@ namespace TourPlanner.DAL.Context {
 
         public IQueryProvider Provider => Entities.AsQueryable().Provider;
 
-        public IEnumerator<TEntity> GetEnumerator() {
+        public IEnumerator<TEntity> GetEnumerator()
+        {
             return Entities.AsQueryable().GetEnumerator();
         }
 
-        IEnumerator IEnumerable.GetEnumerator() {
+        IEnumerator IEnumerable.GetEnumerator()
+        {
             return Entities.AsQueryable().GetEnumerator();
         }
     }

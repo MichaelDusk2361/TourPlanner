@@ -1,9 +1,4 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TourPlanner.BL.MapQuestAPI
 {
@@ -13,7 +8,7 @@ namespace TourPlanner.BL.MapQuestAPI
 
         public MapQuestAPIResponseParser(JObject? response)
         {
-            if(response == null)
+            if (response == null)
                 throw new ArgumentNullException(nameof(response));
             Response = response;
         }

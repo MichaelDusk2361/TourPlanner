@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TourPlanner.BL.MapQuestAPI;
+﻿using TourPlanner.BL.MapQuestAPI;
 using TourPlanner.DAL;
 using TourPlanner.Model;
 
@@ -23,7 +18,7 @@ namespace TourPlanner.BL.Controller
         public void DeleteTour(Tour tour)
         {
             _uow.TourRepository.Delete(tour);
-            if(File.Exists(tour.ImageUrl))
+            if (File.Exists(tour.ImageUrl))
                 File.Delete(tour.ImageUrl);
         }
 
@@ -39,7 +34,7 @@ namespace TourPlanner.BL.Controller
 
             //Load Image and store in filesystem
             var imageBytes = await _mapQuestAPI.GetRouteImageAsync();
-            if(imageBytes.Length > 0)
+            if (imageBytes.Length > 0)
             {
                 tour.ImageUrl = CreateImageUrl(tour);
                 await File.WriteAllBytesAsync(tour.ImageUrl, imageBytes);

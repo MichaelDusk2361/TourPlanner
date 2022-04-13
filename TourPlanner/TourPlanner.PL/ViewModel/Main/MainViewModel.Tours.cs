@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TourPlanner.PL.ViewModel.Main
 {
@@ -51,7 +47,11 @@ namespace TourPlanner.PL.ViewModel.Main
             Tours.SelectedTourChanged += (s, e) =>
             {
                 if (Tours.SelectedTour != null)
+                {
                     TourDetail.SelectedTour = new(Tours.SelectedTour);
+                    using var tourLogController = ControllerFactory.CreateTourLogController();
+                    Logs.TourLogs = new(tourLogController.GetTourLogsForTour(Tours.SelectedTour));
+                }
             };
         }
 

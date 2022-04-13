@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using TourPlanner.DAL.Exceptions;
 using TourPlanner.Model;
 using TourPlanner.Model.Attributes;
@@ -63,7 +58,7 @@ namespace TourPlanner.DAL.Mock
         {
             var target = (from e in Data[GetTableName(entity.GetType())] where e.Id == entity.Id select e).First();
 
-            if(target.Version > entity.Version)
+            if (target.Version > entity.Version)
                 throw new StaleObjectStateException(GetTableName(typeof(TEntity)));
 
             entity.Version++;
