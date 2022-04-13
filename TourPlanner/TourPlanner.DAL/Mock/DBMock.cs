@@ -5,53 +5,13 @@ using TourPlanner.Model.Attributes;
 
 namespace TourPlanner.DAL.Mock
 {
-    public class DBMock
+    public static class DBMock
     {
 
         static public Dictionary<string, List<ITEntity>> Data { get; private set; } = new()
         {
-            {
-                GetTableName(typeof(Tour)),
-                new()
-                {
-                    new Tour()
-                    {
-                        Name = "1. Tour",
-                        Id = new("7c9e6679-7425-40de-944b-e07fc1f90ae7"),
-                    },
-                    new Tour()
-                    {
-                        Name = "2. Tour",
-                        Id = new("8c9e6679-7425-40de-944b-e07fc1f90ae7"),
-                    },
-                    new Tour()
-                    {
-                        Name = "3. Tour",
-                        Id = new("9c9e6679-7425-40de-944b-e07fc1f90ae7"),
-                    },
-                    new Tour()
-                    {
-                        Name = "4. Tour",
-                        Id = new("ac9e6679-7425-40de-944b-e07fc1f90ae7"),
-                    },
-                    new Tour()
-                    {
-                        Name = "5. Tour",
-                        Id = new("bc9e6679-7425-40de-944b-e07fc1f90ae7"),
-                    },
-                }
-            },
-            {
-                GetTableName(typeof(TourLog)),
-                new()
-                {
-                    new TourLog(),
-                    new TourLog(),
-                    new TourLog(),
-                    new TourLog(),
-                    new TourLog(),
-                }
-            }
+            { GetTableName(typeof(Tour)), CreateTourData() },
+            { GetTableName(typeof(TourLog)), CreateTourLogData() },
         };
 
         static public void Update<TEntity>(TEntity entity) where TEntity : class, ITEntity
@@ -73,6 +33,55 @@ namespace TourPlanner.DAL.Mock
                 }
             }
 
+        }
+
+        private static List<ITEntity> CreateTourData(){
+            return new()
+            {
+                new Tour()
+                {
+                    Name = "1. Tour",
+                    Id = new("7c9e6679-7425-40de-944b-e07fc1f90ae7"),
+                },
+                new Tour()
+                {
+                    Name = "2. Tour",
+                    Id = new("8c9e6679-7425-40de-944b-e07fc1f90ae7"),
+                },
+                new Tour()
+                {
+                    Name = "3. Tour",
+                    Id = new("9c9e6679-7425-40de-944b-e07fc1f90ae7"),
+                },
+                new Tour()
+                {
+                    Name = "4. Tour",
+                    Id = new("ac9e6679-7425-40de-944b-e07fc1f90ae7"),
+                },
+                new Tour()
+                {
+                    Name = "5. Tour",
+                    Id = new("bc9e6679-7425-40de-944b-e07fc1f90ae7"),
+                },
+            };
+        }
+
+        private static List<ITEntity> CreateTourLogData()
+        {
+            return new()
+            {
+                new TourLog(),
+                new TourLog(),
+                new TourLog(),
+                new TourLog(),
+                new TourLog(),
+            };
+        }
+
+        static public void Reset()
+        {
+            Data[GetTableName(typeof(Tour))] = CreateTourData();
+            Data[GetTableName(typeof(TourLog))] = CreateTourLogData();
         }
 
         static public void Delete<TEntity>(TEntity entity) where TEntity : class, ITEntity
