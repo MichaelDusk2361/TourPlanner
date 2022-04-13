@@ -19,7 +19,7 @@ namespace TourPlanner.PL.ViewModel.Main
                 if (Tours.SelectedTour != null)
                 {
                     using var tourController = ControllerFactory.CreateTourController();
-                    TourDetail.Popularity = tourController.CalculateChildFriendliness();
+                    TourDetail.Popularity = tourController.CalculatePopularity(Tours.SelectedTour);
                 }
             };
         }
@@ -31,7 +31,7 @@ namespace TourPlanner.PL.ViewModel.Main
                 if (Tours.SelectedTour != null)
                 {
                     using var tourController = ControllerFactory.CreateTourController();
-                    TourDetail.ChildFriendliness = tourController.CalculatePopularity();
+                    TourDetail.ChildFriendliness = tourController.CalculateChildFriendliness(Tours.SelectedTour);
                 }
             };
         }

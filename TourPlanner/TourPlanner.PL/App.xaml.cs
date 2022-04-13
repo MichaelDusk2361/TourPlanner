@@ -2,6 +2,7 @@
 using System.Windows;
 using TourPlanner.BL.Factory;
 using TourPlanner.Common;
+using TourPlanner.Common.Logging;
 using TourPlanner.PL.ViewModel.Main;
 using TourPlanner.PL.ViewModel.Sub;
 
@@ -13,12 +14,19 @@ namespace TourPlanner.PL
     /// 
     public partial class App : Application
     {
+        private static ILoggerWrapper logger = LoggerFactory.GetLogger();
+
         private void ApplicationStartup(object sender, StartupEventArgs e)
         {
 
+            logger.Debug("This is a debug message.");
+            logger.Fatal("This is a fatal message.");
+            logger.Warn("This is a warning message.");
+            logger.Error("This is an error message.");
+
             ConfigFile.Parse("AppConfig.json");
 
-            Directory.CreateDirectory("Maps");
+            Directory.CreateDirectory(ConfigFile.AppSettings("MapDir"));
 
             var searchBarViewModel = new SearchBarViewModel();
             var toursViewModel = new ToursViewModel();

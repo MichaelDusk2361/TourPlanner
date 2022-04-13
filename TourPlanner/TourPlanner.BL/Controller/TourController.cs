@@ -1,4 +1,5 @@
 ﻿using TourPlanner.BL.MapQuestAPI;
+using TourPlanner.Common;
 using TourPlanner.DAL;
 using TourPlanner.Model;
 
@@ -31,14 +32,22 @@ namespace TourPlanner.BL.Controller
         {
             _uow.TourRepository.Insert(tour);
         }
-        public int? CalculatePopularity()
+        public int? CalculatePopularity(Tour tour)
         {
-            return 2;
+            var res = _uow.TourLogRepository.Get(log => log.TourId == tour.Id, null);
+            return res.Count;
         }
 
-        public int? CalculateChildFriendliness()
+        public int? CalculateChildFriendliness(Tour tour)
         {
-            return 1;
+            var res = _uow.TourLogRepository.Get(log => log.TourId == tour.Id, null);
+            if (res.Count == 0)
+                return null;
+
+            var difficultySum = 0;
+            res.ForEach(x => difficultySum += x.Difficulty);
+
+            return difficultySum / res.Count;
         }
 
         public async Task RequestAndUpdateTour(Tour tour)
@@ -66,7 +75,7 @@ namespace TourPlanner.BL.Controller
 
         private static string CreateImageUrl(Tour tour)
         {
-            return $"Maps/{tour.Id}.png";
+            return $"{ConfigFile.AppSettings("MapDir")}{tour.Id}.png";
         }
     }
 }

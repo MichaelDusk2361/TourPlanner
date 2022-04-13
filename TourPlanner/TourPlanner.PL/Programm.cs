@@ -1,5 +1,5 @@
 ﻿using System;
-using TourPlanner.BL;
+using System.IO;
 using TourPlanner.Common;
 
 namespace TourPlanner.PL
@@ -10,8 +10,7 @@ namespace TourPlanner.PL
         public static void Main(string[] args)
         {
             ConfigFile.Parse("AppConfig.json");
-
-            Class1.RunAsync();
+            Directory.CreateDirectory(ConfigFile.AppSettings("MapDir"));
 
             var app = new App();
             app.InitializeComponent();
