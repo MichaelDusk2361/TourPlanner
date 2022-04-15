@@ -12,18 +12,11 @@
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
-                    <MenuItem Header="_New" />
-                    <MenuItem Header="_Open" />
-                    <MenuItem Header="_Save" />
+                    <MenuItem Header="_Tour Report" Command="{Binding TourReportCommand}"/>
+                    <MenuItem Header="_Tours Summary" Command="{Binding ToursSummaryCommand}" />
                     <Separator />
-                    <MenuItem Header="_Exit" />
-                </MenuItem>
-                <MenuItem Header="_File">
-                    <MenuItem Header="_New" />
-                    <MenuItem Header="_Open" />
-                    <MenuItem Header="_Save" />
-                    <Separator />
-                    <MenuItem Header="_Exit" />
+                    <MenuItem Header="_Import" Command="{Binding ImportCommand}"/>
+                    <MenuItem Header="_Export" Command="{Binding ExportCommand}"/>
                 </MenuItem>
             </Menu>
         </DockPanel>
