@@ -41,7 +41,9 @@ namespace TourPlanner.PL.ViewModel.Sub
         {
             get
             {
-                return Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), SelectedTour?.ImageUrl);
+                if(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) != null &&  SelectedTour?.ImageUrl != null)
+                    return Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), SelectedTour?.ImageUrl);
+                return null;
             }
             set
             {

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using TourPlanner.Model;
 
 namespace TourPlanner.PL.ViewModel.Main
 {
@@ -55,13 +56,11 @@ namespace TourPlanner.PL.ViewModel.Main
                 {
                     s_logger.Debug($"User selected different tour: {Tours.SelectedTour.Id}");
                     TourDetail.SelectedTour = new(Tours.SelectedTour);
-                    using var tourLogController = ControllerFactory.CreateTourLogController();
-                    Logs.TourLogs = new(tourLogController.GetTourLogsForTour(Tours.SelectedTour));
+                    LoadTourLogs();
                     Logs.ReevaluateCalculations();
                 }
             };
         }
-
 
         private void LoadTours()
         {

@@ -24,5 +24,10 @@ namespace TourPlanner.BL.Controller
         {
             _uow.TourLogRepository.Delete(tourLog);
         }
+
+        public void UpdateTourLog(TourLog log)
+        {
+            _uow.TourLogRepository.Update(log);
+        }
     }
 }

@@ -14,55 +14,56 @@
     <Grid>
         <TabControl>
             <TabItem Header="Info">
-                <StackPanel>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
 
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                        </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0">Name</TextBlock>
+                            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedTour.Name}" ></TextBox>
 
-                        <TextBlock Grid.Row="0" Grid.Column="0">Name</TextBlock>
-                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedTour.Name}" ></TextBox>
+                            <TextBlock Grid.Row="1" Grid.Column="0">Start</TextBlock>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedTour.Start}" ></TextBox>
 
-                        <TextBlock Grid.Row="1" Grid.Column="0">Start</TextBlock>
-                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedTour.Start}" ></TextBox>
+                            <TextBlock Grid.Row="2" Grid.Column="0">Destination</TextBlock>
+                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedTour.Destination}" ></TextBox>
 
-                        <TextBlock Grid.Row="2" Grid.Column="0">Destination</TextBlock>
-                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedTour.Destination}" ></TextBox>
+                            <TextBlock Grid.Row="3" Grid.Column="0">EstimatedTime</TextBlock>
+                            <TextBox Grid.Row="3" Grid.Column="1" IsReadOnly="True" Text="{Binding SelectedTour.EstimatedTime}" ></TextBox>
 
-                        <TextBlock Grid.Row="3" Grid.Column="0">EstimatedTime</TextBlock>
-                        <TextBox Grid.Row="3" Grid.Column="1" IsReadOnly="True" Text="{Binding SelectedTour.EstimatedTime}" ></TextBox>
+                            <TextBlock Grid.Row="4" Grid.Column="0">Transport type</TextBlock>
+                            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SelectedTour.TransportType}" ></TextBox>
 
-                        <TextBlock Grid.Row="4" Grid.Column="0">Transport type</TextBlock>
-                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SelectedTour.TransportType}" ></TextBox>
+                            <TextBlock Grid.Row="5" Grid.Column="0">Tour distance</TextBlock>
+                            <TextBox Grid.Row="5" Grid.Column="1" IsReadOnly="True" Text="{Binding SelectedTour.TourDistance}" ></TextBox>
 
-                        <TextBlock Grid.Row="5" Grid.Column="0">Tour distance</TextBlock>
-                        <TextBox Grid.Row="5" Grid.Column="1" IsReadOnly="True" Text="{Binding SelectedTour.TourDistance}" ></TextBox>
+                            <TextBlock Grid.Row="6" Grid.Column="0">Description</TextBlock>
+                            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SelectedTour.Description}" ></TextBox>
 
-                        <TextBlock Grid.Row="6" Grid.Column="0">Description</TextBlock>
-                        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SelectedTour.Description}" ></TextBox>
-                        
-                        <TextBlock Grid.Row="7" Grid.Column="0">Child-friendliness</TextBlock>
-                        <TextBox Grid.Row="7" Grid.Column="1" IsReadOnly="True" Text="{Binding ChildFriendliness}" ></TextBox>
+                            <TextBlock Grid.Row="7" Grid.Column="0">Child-friendliness</TextBlock>
+                            <TextBox Grid.Row="7" Grid.Column="1" IsReadOnly="True" Text="{Binding ChildFriendliness}" ></TextBox>
 
-                        <TextBlock Grid.Row="8" Grid.Column="0">Popularity</TextBlock>
-                        <TextBox Grid.Row="8" Grid.Column="1" IsReadOnly="True" Text="{Binding Popularity}" ></TextBox>
-                    </Grid>
-                    <Button Command="{Binding ApplyChangesCommand}">Apply</Button>
-                    <Button Command="{Binding CancelChangesCommand}">Cancel</Button>
-                </StackPanel>
+                            <TextBlock Grid.Row="8" Grid.Column="0">Popularity</TextBlock>
+                            <TextBox Grid.Row="8" Grid.Column="1" IsReadOnly="True" Text="{Binding Popularity}" ></TextBox>
+                        </Grid>
+                        <Button Command="{Binding ApplyChangesCommand}">Apply</Button>
+                        <Button Command="{Binding CancelChangesCommand}">Cancel</Button>
+                    </StackPanel>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Map">
                 <Image Source="{Binding SourceUri, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StringToImageConverter}}"/>

@@ -13,5 +13,23 @@ namespace TourPlanner.Model
         public int Rating { get; set; } = 0;
         public Guid Id { get; set; }
         public int Version { get; set; } = 1;
+
+        public TourLog()
+        {
+
+        }
+
+
+        public TourLog(TourLog origin)
+        {
+            TourId = origin.TourId;
+            Date = origin.Date;
+            Comment = origin.Comment;
+            Difficulty = origin.Difficulty;
+            CompletionTime = origin.CompletionTime;
+            Rating = origin.Rating;
+            Id = origin.Id;
+            Version = origin.Version;
+        }
     }
 }

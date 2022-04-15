@@ -29,9 +29,11 @@ namespace TourPlanner.PL.ViewModel.Sub
 
         public ICommand AddTourLogCommand { get; }
         public ICommand RemoveTourLogCommand { get; }
+        public ICommand EditTourLogCommand { get; }
 
         public event EventHandler? AddTourLogEvent;
         public event EventHandler? RemoveTourLogEvent;
+        public event EventHandler? EditTourLogEvent;
 
         private ObservableCollection<TourLog> _tourLogs = new();
         public ObservableCollection<TourLog> TourLogs
@@ -58,6 +60,12 @@ namespace TourPlanner.PL.ViewModel.Sub
             RemoveTourLogCommand = new RelayCommand((_) =>
             {
                 RemoveTourLogEvent?.Invoke(this, EventArgs.Empty);
+                ReevaluateCalculations();
+            });
+
+            EditTourLogCommand = new RelayCommand((_) =>
+            {
+                EditTourLogEvent?.Invoke(this, EventArgs.Empty);
                 ReevaluateCalculations();
             });
         }

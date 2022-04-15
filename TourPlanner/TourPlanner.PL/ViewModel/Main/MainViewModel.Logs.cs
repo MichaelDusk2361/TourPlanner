@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using TourPlanner.Model;
+using TourPlanner.PL.EditTourLog;
 
 namespace TourPlanner.PL.ViewModel.Main
 {
@@ -10,6 +11,33 @@ namespace TourPlanner.PL.ViewModel.Main
         {
             AddAddTourLogEvent();
             AddRemoveTourLogEvent();
+            AddEditTourLogEvent();
+        }
+
+        private void AddEditTourLogEvent()
+        {
+            Logs.EditTourLogEvent += (sender, e) =>
+            {
+                if (Logs.SelectedTourLog != null)
+                {
+                    var editTourLogDialog = new EditTourLogDialog
+                    {
+                        Log = new(Logs.SelectedTourLog)
+                    };
+                    var dialogResult = editTourLogDialog.ShowDialog();
+
+                    if ((dialogResult ?? false) && editTourLogDialog.Log != null)
+                    {
+                        using (var tourLogController = ControllerFactory.CreateTourLogController())
+                        {
+                            tourLogController.UpdateTourLog(editTourLogDialog.Log);
+                        };
+
+                        LoadTourLogs();
+                        Logs.ReevaluateCalculations();
+                    }
+                }
+            };
         }
 
         private void AddRemoveTourLogEvent()
@@ -50,12 +78,20 @@ namespace TourPlanner.PL.ViewModel.Main
 
                     tourLogController.AddTourLog(tourLog);
                     Logs.TourLogs.Add(tourLog);
+                    Logs.SelectedTourLog = tourLog;
                 }
 
             };
         }
 
-
+        private void LoadTourLogs()
+        {
+            if (Tours.SelectedTour != null)
+            {
+                using var tourLogController = ControllerFactory.CreateTourLogController();
+                Logs.TourLogs = new(tourLogController.GetTourLogsForTour(Tours.SelectedTour));
+            }
+        }
 
         private static readonly Random _random = new();
 
