@@ -32,7 +32,6 @@ namespace TourPlanner.DAL.Mock
                     targetProp?.SetValue(target, sourceProp.GetValue(entity, null), null);
                 }
             }
-
         }
 
         private static List<ITEntity> CreateTourData(){
@@ -70,11 +69,56 @@ namespace TourPlanner.DAL.Mock
         {
             return new()
             {
-                new TourLog(),
-                new TourLog(),
-                new TourLog(),
-                new TourLog(),
-                new TourLog(),
+                new TourLog()
+                {
+                    Id = new("7c9e6679-7425-40de-944b-e07fc1f91ae7"),
+                    TourId = new("7c9e6679-7425-40de-944b-e07fc1f90ae7"),
+                    CompletionTime = "1234",
+                    Comment = "abc",
+                    Date = DateTime.Now,
+                    Difficulty = 1,
+                    Rating = 4,
+                },
+                new TourLog()
+                {
+                    Id = new("7c9e6679-7425-40df-944b-e07fc1f91ae7"),
+                    TourId = new("7c9e6679-7425-40de-944b-e07fc1f90ae7"),
+                    CompletionTime = "1234",
+                    Comment = "abcd",
+                    Date = DateTime.Now,
+                    Difficulty = 2,
+                    Rating = 5,
+                },
+                new TourLog()
+                {
+                    Id = new("7c9e6679-7425-42de-944b-e07fc1f91ae7"),
+                    TourId= new("7c9e6679-7425-40de-944b-e07fc1f90ae7"),
+                    CompletionTime = "1234",
+                    Comment = "abcde",
+                    Date = DateTime.Now,
+                    Difficulty = 3,
+                    Rating = 6,
+                },
+                new TourLog()
+                {
+                    Id = new("7c9e6679-7425-43de-944b-e07fc1f91ae7"),
+                    TourId = new("8c9e6679-7425-40de-944b-e07fc1f90ae7"),
+                    CompletionTime = "1234",
+                    Comment = "abcdef",
+                    Date = DateTime.Now,
+                    Difficulty = 4,
+                    Rating = 7,
+                },
+                new TourLog()
+                {
+                    Id = new("7c9e6679-7425-44de-944b-e07fc1f91ae7"),
+                    TourId = new("8c9e6679-7425-40de-944b-e07fc1f90ae7"),
+                    CompletionTime = "1234",
+                    Comment = "abcdefg",
+                    Date = DateTime.Now,
+                    Difficulty = 5,
+                    Rating = 8,
+                },
             };
         }
 

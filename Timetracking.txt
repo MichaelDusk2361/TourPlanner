@@ -6,3 +6,4 @@
 11.4.2021 integrating mapquestapi into PL 5h
 12.4.2021 implemented adding and removing of logs and auto computed tour parameters into PL 2h
 12.4.3021 added logging 3h
+15.4.3021 implemented editing of tours 3h

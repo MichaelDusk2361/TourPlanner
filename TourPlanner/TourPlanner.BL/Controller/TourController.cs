@@ -48,6 +48,7 @@ namespace TourPlanner.BL.Controller
         {
             _uow.TourRepository.Insert(tour);
         }
+
         public int? CalculatePopularity(Tour tour)
         {
             var res = _uow.TourLogRepository.Get(log => log.TourId == tour.Id, null);
