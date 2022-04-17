@@ -7,3 +7,4 @@
 12.4.2021 implemented adding and removing of logs and auto computed tour parameters into PL 2h
 12.4.3021 added logging 3h
 15.4.3021 implemented editing of tours and menubar commands 4h
+17.4.3021 added more unit tests 2h
