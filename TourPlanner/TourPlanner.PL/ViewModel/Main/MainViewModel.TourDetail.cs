@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 
 namespace TourPlanner.PL.ViewModel.Main
 {
@@ -49,16 +50,21 @@ namespace TourPlanner.PL.ViewModel.Main
         {
             TourDetail.ApplyChangesEvent += async (s, e) =>
             {
-                if (TourDetail.SelectedTour != null)
-                {
-                    using (var tourController = ControllerFactory.CreateTourController())
-                    {
-                        await tourController.RequestAndUpdateTour(TourDetail.SelectedTour);
-                    };
-                    LoadTours();
-                    Tours.SelectedTour = Tours.AllTours.Where(x => x.Id == TourDetail.SelectedTour.Id).First();
-                }
+                await ApplyChangesAsync();
             };
+        }
+
+        public async Task ApplyChangesAsync()
+        {
+            if (TourDetail.SelectedTour != null)
+            {
+                using (var tourController = ControllerFactory.CreateTourController())
+                {
+                    await tourController.RequestAndUpdateTour(TourDetail.SelectedTour);
+                };
+                LoadTours();
+                Tours.SelectedTour = Tours.AllTours.Where(x => x.Id == TourDetail.SelectedTour.Id).First();
+            }
         }
     }
 }
