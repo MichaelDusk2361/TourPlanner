@@ -1,4 +1,5 @@
-﻿using TourPlanner.BL.MapQuestAPI;
+﻿using TourPlanner.BL.DocumentGeneration;
+using TourPlanner.BL.MapQuestAPI;
 using TourPlanner.Common;
 using TourPlanner.DAL;
 using TourPlanner.Model;
@@ -9,6 +10,21 @@ namespace TourPlanner.BL.Controller
     {
         internal TourController(IUnitOfWork uow, IMapQuestAPIRequest mapQuestAPI) : base(uow, mapQuestAPI)
         {
+        }
+
+        public void GenerateTourReport(Tour tour)
+        {
+            s_logger.Info($"User generated report of tour {tour.Id}");
+            using var tourReportGenerator = new TourReportGenerator($"TourReport_{tour.Name}_{Guid.NewGuid()}.pdf");
+            tourReportGenerator.AddTour(tour);
+            tourReportGenerator.AddTourImage(tour);
+            var tourLogs = _uow.TourLogRepository.Get(tourLog => tourLog.TourId == tour.Id);
+            tourReportGenerator.AddTourLogs(tourLogs);
+        }
+
+        public void GenerateToursSummary()
+        {
+
         }
 
         public List<Tour> GetAllTours()

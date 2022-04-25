@@ -4,6 +4,8 @@ using TourPlanner.DAL;
 
 namespace TourPlanner.BL.Controller
 {
+
+    //refactor controller so that UOW is not dependency injected but specific type of uow is
     public abstract class BaseController : IDisposable
     {
         protected readonly IUnitOfWork _uow;

@@ -16,7 +16,11 @@ namespace TourPlanner.PL.ViewModel.Main
         {
             MenuBar.TourReportEvent += (sender, e) =>
             {
-
+                if (Tours.SelectedTour != null)
+                {
+                    using var tourController = ControllerFactory.CreateTourController();
+                    tourController.GenerateTourReport(Tours.SelectedTour);
+                }
             };
         }
 
@@ -24,7 +28,8 @@ namespace TourPlanner.PL.ViewModel.Main
         {
             MenuBar.ToursSummaryEvent += (sender, e) =>
             {
-
+                using var tourController = ControllerFactory.CreateTourController();
+                tourController.GenerateToursSummary();
             };
         }
 
