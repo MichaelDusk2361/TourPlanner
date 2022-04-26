@@ -12,6 +12,7 @@ namespace TourPlanner.BL.Controller
         {
         }
 
+
         public void GenerateTourReport(Tour tour)
         {
             s_logger.Info($"User generated report of tour {tour.Id}");
@@ -24,7 +25,14 @@ namespace TourPlanner.BL.Controller
 
         public void GenerateToursSummary()
         {
-
+            s_logger.Info($"User generated summary of tours");
+            using var toursSummaryGenerator = new ToursSummaryGenerator($"ToursSummary_{Guid.NewGuid()}.pdf");
+            var allTours = _uow.TourRepository.Get();
+            foreach (var tour in allTours)
+            {
+                var allLogsOfTour = _uow.TourLogRepository.Get(tourLog => tourLog.TourId == tour.Id);
+                toursSummaryGenerator.AddStatisticalAnalysis(tour, allLogsOfTour);
+            }
         }
 
         public List<Tour> GetAllTours()

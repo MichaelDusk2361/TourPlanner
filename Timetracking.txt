@@ -8,4 +8,5 @@
 12.4.2021 added logging 3h
 15.4.2021 implemented editing of tours and menubar commands 4h
 17.4.2021 added more unit tests 2h
-25.04.2021 added report geneeration for tour summary 2h
+25.04.2021 added report geneeration for tour 2h
+25.04.2021 added report geneeration for tours summary 1h
