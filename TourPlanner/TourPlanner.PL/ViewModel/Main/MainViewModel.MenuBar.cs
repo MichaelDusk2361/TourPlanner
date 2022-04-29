@@ -37,7 +37,8 @@ namespace TourPlanner.PL.ViewModel.Main
         {
             MenuBar.ExportEvent += (sender, e) =>
             {
-
+                using var tourController = ControllerFactory.CreateTourController();
+                tourController.Export("ExportTest.json");
             };
         }
 
@@ -45,7 +46,10 @@ namespace TourPlanner.PL.ViewModel.Main
         {
             MenuBar.ImportEvent += (sender, e) =>
             {
-
+                // use select folder dialog??
+                using var tourController = ControllerFactory.CreateTourController();
+                tourController.Import("ExportTest.json");
+                LoadTours();
             };
         }
     }

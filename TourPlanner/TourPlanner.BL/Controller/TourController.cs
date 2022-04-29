@@ -1,5 +1,6 @@
 ﻿using TourPlanner.BL.DocumentGeneration;
 using TourPlanner.BL.MapQuestAPI;
+using TourPlanner.BL.TourIO;
 using TourPlanner.Common;
 using TourPlanner.DAL;
 using TourPlanner.Model;
@@ -16,7 +17,7 @@ namespace TourPlanner.BL.Controller
         public void GenerateTourReport(Tour tour)
         {
             s_logger.Info($"User generated report of tour {tour.Id}");
-            using var tourReportGenerator = new TourReportGenerator($"TourReport_{tour.Name}_{Guid.NewGuid()}.pdf");
+            using var tourReportGenerator = new TourReportGenerator($"TourReport_{tour.Name}_{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.pdf");
             tourReportGenerator.AddTour(tour);
             tourReportGenerator.AddTourImage(tour);
             var tourLogs = _uow.TourLogRepository.Get(tourLog => tourLog.TourId == tour.Id);
@@ -26,7 +27,7 @@ namespace TourPlanner.BL.Controller
         public void GenerateToursSummary()
         {
             s_logger.Info($"User generated summary of tours");
-            using var toursSummaryGenerator = new ToursSummaryGenerator($"ToursSummary_{Guid.NewGuid()}.pdf");
+            using var toursSummaryGenerator = new ToursSummaryGenerator($"ToursSummary_{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.pdf");
             var allTours = _uow.TourRepository.Get();
             foreach (var tour in allTours)
             {
@@ -38,6 +39,11 @@ namespace TourPlanner.BL.Controller
         public List<Tour> GetAllTours()
         {
             return _uow.TourRepository.Get();
+        }
+
+        public void Import(string path)
+        {
+            new TourImporter(_uow).Import(path);
         }
 
         public void DeleteTour(Tour tour)
@@ -119,6 +125,10 @@ namespace TourPlanner.BL.Controller
             _uow.TourRepository.Update(tour);
         }
 
+        public void Export(string? path)
+        {
+            new TourExporter(_uow).Export(path);
+        }
 
         private static string CreateImageUrl(Tour tour)
         {
