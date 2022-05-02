@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 
 namespace TourPlanner.PL.ViewModel.Main
 {
@@ -38,7 +39,8 @@ namespace TourPlanner.PL.ViewModel.Main
             MenuBar.ExportEvent += (sender, e) =>
             {
                 using var tourController = ControllerFactory.CreateTourController();
-                tourController.Export("ExportTest.json");
+                tourController.Export($"ToursPlannerExport_{DateTime.Now.ToString("yyyyMMddHHmmssfff")}_{Guid.NewGuid()}.pdf");
+                s_logger.Info("User generated export");
             };
         }
 
@@ -46,9 +48,19 @@ namespace TourPlanner.PL.ViewModel.Main
         {
             MenuBar.ImportEvent += (sender, e) =>
             {
-                // use select folder dialog??
-                using var tourController = ControllerFactory.CreateTourController();
-                tourController.Import("ExportTest.json");
+                using (var tourController = ControllerFactory.CreateTourController())
+                {
+                    OpenFileDialog dlg = new();
+                    dlg.DefaultExt = ".json";
+                    dlg.Filter = "Json files (*.json)|*.json";
+                    var result = dlg.ShowDialog();
+                    if (result == true)
+                    {
+                        string filename = dlg.FileName;
+                        tourController.Import(filename);
+                        s_logger.Info("User imported data from file");
+                    }
+                }
                 LoadTours();
             };
         }
