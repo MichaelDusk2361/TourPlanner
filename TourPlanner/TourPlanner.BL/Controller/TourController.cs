@@ -56,12 +56,12 @@ namespace TourPlanner.BL.Controller
             return res ?? new();
         }
 
-        private bool TourLogContainString(Tour tour, string searchText)
+        public bool TourLogContainString(Tour tour, string searchText)
         {
             return _uow.TourLogRepository.Get(log => log.TourId == tour.Id).Any(log => log.Comment.Contains(searchText, StringComparison.CurrentCultureIgnoreCase));
         }
 
-        private static bool TourContainsString(Tour tour, string searchText)
+        public static bool TourContainsString(Tour tour, string searchText)
         {
             return tour.Start.Contains(searchText, StringComparison.CurrentCultureIgnoreCase) ||
                 tour.TransportType.Contains(searchText, StringComparison.CurrentCultureIgnoreCase) ||

@@ -31,7 +31,7 @@
             <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Log.Difficulty}" ></TextBox>
 
             <TextBlock Grid.Row="3" Grid.Column="0">CompletionTime</TextBlock>
-            <TextBox Grid.Row="3" Grid.Column="1" IsReadOnly="True" Text="{Binding Log.CompletionTime}" ></TextBox>
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Log.CompletionTime}" ></TextBox>
 
             <TextBlock Grid.Row="4" Grid.Column="0">Rating</TextBlock>
             <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Log.Rating}" ></TextBox>

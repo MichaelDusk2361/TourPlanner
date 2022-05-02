@@ -22,6 +22,11 @@ namespace TourPlanner.Common
             s_configFile = parsedConfig;
         }
 
+        public static void Unload()
+        {
+            s_configFile = null;
+        }
+
         public static string AppSettings(string key)
         {
             if (s_configFile == null)

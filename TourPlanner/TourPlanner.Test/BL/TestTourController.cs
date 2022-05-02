@@ -42,6 +42,46 @@ namespace TourPlanner.Test.BL
             Assert.IsTrue(File.Exists($"{ConfigFile.AppSettings("MapDir")}7c9e6679-7425-40de-944b-e07fc1f90ae7.png"));
         }
 
+        [Test]
+        public void TestSearch_IsCaseInsensitive()
+        {
+            var res = TourController.TourContainsString(new Tour()
+            {
+                Name = "1. Tour",
+                Id = new("7c9e6679-7425-40de-944b-e07fc1f90ae7"),
+            }, "1. tour");
+
+            Assert.IsTrue(res);
+        }
+
+        [Test]
+        public void TestSearch_CanFindStringInTourLogs()
+        {
+            using var controller = Factory.CreateTourController();
+
+            var res = controller.TourLogContainString(new Tour()
+            {
+                Name = "1. Tour",
+                Id = new("7c9e6679-7425-40de-944b-e07fc1f90ae7"),
+            }, "abcde");
+
+            Assert.IsTrue(res);
+        }
+
+        [Test]
+        public void TestSearch_CantFindStringInTourLogs()
+        {
+            using var controller = Factory.CreateTourController();
+
+            var res = controller.TourLogContainString(new Tour()
+            {
+                Name = "1. Tour",
+                Id = new("7c9e6679-7425-40de-944b-e07fc1f90ae7"),
+            }, "abcdefg");
+
+            Assert.IsFalse(res);
+        }
+
         [OneTimeTearDown]
         public void RemoveMapsDir()
         {

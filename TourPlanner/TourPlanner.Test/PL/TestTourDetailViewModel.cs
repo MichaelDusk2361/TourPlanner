@@ -41,7 +41,6 @@ namespace TourPlanner.Test.PL
             string selectedOriginal = JsonConvert.SerializeObject(Tours.SelectedTour);
             TourDetail.SelectedTour.Description = "235711131719";
             TourDetail.CancelChangesCommand.Execute(null);
-            TourDetail.ApplyChangesCommand.Execute(null);
             Assert.AreEqual(expected: selectedOriginal, actual: JsonConvert.SerializeObject(Tours.SelectedTour));
         }
 
@@ -52,6 +51,14 @@ namespace TourPlanner.Test.PL
             Assert.AreNotEqual(expected: "Maps/7c9e6679-7425-40de-944b-e07fc1f90ae7.png", actual: TourDetail.SelectedTour.ImageUrl);
             await Main.ApplyChangesAsync();
             Assert.AreEqual(expected: "Maps/7c9e6679-7425-40de-944b-e07fc1f90ae7.png", actual: Tours.SelectedTour.ImageUrl);
+        }
+
+        [Test] 
+        public void TestSelectedTour_IsNotNullIfSelectedTourInTourViewChanges()
+        {
+            Assert.IsNull(TourDetail.SelectedTour);
+            Tours.SelectedTour = Tours.AllTours[0];
+            Assert.IsNotNull(TourDetail.SelectedTour);
         }
     }
 }

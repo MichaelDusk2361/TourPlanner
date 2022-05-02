@@ -47,6 +47,18 @@ namespace TourPlanner.Test.DAL
         }
 
         [Test]
+        public void TestResetDB_HasCorrectNumberOfEntries()
+        {
+            DBMock.Insert(new Tour() { Id = Guid.NewGuid() });
+            DBMock.Insert(new Tour() { Id = Guid.NewGuid() });
+            DBMock.Insert(new Tour() { Id = Guid.NewGuid() });
+            var currentDataCount = DBMock.GetMockData<Tour>().Count;
+            DBMock.Reset();
+            var dataCountAfterReset = DBMock.GetMockData<Tour>().Count;
+            Assert.AreEqual(actual: dataCountAfterReset, expected: currentDataCount - 3);
+        }
+
+        [Test]
         public void TestDelete()
         {
             var currentDataCount = DBMock.GetMockData<Tour>().Count;

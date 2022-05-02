@@ -36,11 +36,5 @@ namespace TourPlanner.Test.PL
             TourDetail = new TourDetailViewModel();
             Main = new MainViewModel(SearchBar, Tours, TourDetail, MenuBar, Logs, new ControllerFactoryMock());
         }
-
-        [OneTimeTearDown]
-        public void RemoveMapsDir()
-        {
-            Directory.Delete(ConfigFile.AppSettings("MapDir"), true);
-        }
     }
 }
