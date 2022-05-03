@@ -67,13 +67,11 @@ namespace TourPlanner.PL.ViewModel.Main
 
                     var tourLog = new TourLog()
                     {
-                        Comment = RandomString(15),
                         Date = DateTime.Now,
-                        CompletionTime = _random.Next(10, 1000).ToString(),
-                        Difficulty = _random.Next(1, 10),
+                        Difficulty = 5,
                         Id = Guid.NewGuid(),
                         TourId = Tours.SelectedTour.Id,
-                        Rating = _random.Next(1, 10),
+                        Rating = 5,
                     };
 
                     tourLogController.AddTourLog(tourLog);

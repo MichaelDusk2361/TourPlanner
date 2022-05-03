@@ -48,11 +48,7 @@ namespace TourPlanner.BL.DocumentGeneration
 
             foreach (TourLog log in tourLogs)
             {
-                if (int.TryParse(log.CompletionTime, out int time))
-                {
-                    averageTime += time;
-                }
-
+                averageTime += log.CompletionTime;
                 averageDifficulty += log.Difficulty;
                 averageRating += log.Rating;
             }

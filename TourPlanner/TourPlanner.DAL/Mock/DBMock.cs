@@ -34,7 +34,14 @@ namespace TourPlanner.DAL.Mock
             }
         }
 
-        private static List<ITEntity> CreateTourData(){
+        public static void Clear()
+        {
+            Data[GetTableName(typeof(Tour))] = new();
+            Data[GetTableName(typeof(TourLog))] = new();
+        }
+
+        private static List<ITEntity> CreateTourData()
+        {
             return new()
             {
                 new Tour()
@@ -73,7 +80,7 @@ namespace TourPlanner.DAL.Mock
                 {
                     Id = new("7c9e6679-7425-40de-944b-e07fc1f91ae7"),
                     TourId = new("7c9e6679-7425-40de-944b-e07fc1f90ae7"),
-                    CompletionTime = "1234",
+                    CompletionTime = 1234,
                     Comment = "abc",
                     Date = DateTime.Now,
                     Difficulty = 1,
@@ -83,7 +90,7 @@ namespace TourPlanner.DAL.Mock
                 {
                     Id = new("7c9e6679-7425-40df-944b-e07fc1f91ae7"),
                     TourId = new("7c9e6679-7425-40de-944b-e07fc1f90ae7"),
-                    CompletionTime = "1234",
+                    CompletionTime = 1234,
                     Comment = "abcd",
                     Date = DateTime.Now,
                     Difficulty = 2,
@@ -92,8 +99,8 @@ namespace TourPlanner.DAL.Mock
                 new TourLog()
                 {
                     Id = new("7c9e6679-7425-42de-944b-e07fc1f91ae7"),
-                    TourId= new("7c9e6679-7425-40de-944b-e07fc1f90ae7"),
-                    CompletionTime = "1234",
+                    TourId = new("7c9e6679-7425-40de-944b-e07fc1f90ae7"),
+                    CompletionTime = 1234,
                     Comment = "abcde",
                     Date = DateTime.Now,
                     Difficulty = 3,
@@ -103,7 +110,7 @@ namespace TourPlanner.DAL.Mock
                 {
                     Id = new("7c9e6679-7425-43de-944b-e07fc1f91ae7"),
                     TourId = new("8c9e6679-7425-40de-944b-e07fc1f90ae7"),
-                    CompletionTime = "1234",
+                    CompletionTime = 1234,
                     Comment = "abcdef",
                     Date = DateTime.Now,
                     Difficulty = 4,
@@ -113,7 +120,7 @@ namespace TourPlanner.DAL.Mock
                 {
                     Id = new("7c9e6679-7425-44de-944b-e07fc1f91ae7"),
                     TourId = new("8c9e6679-7425-40de-944b-e07fc1f90ae7"),
-                    CompletionTime = "1234",
+                    CompletionTime = 1234,
                     Comment = "abcdefg",
                     Date = DateTime.Now,
                     Difficulty = 5,

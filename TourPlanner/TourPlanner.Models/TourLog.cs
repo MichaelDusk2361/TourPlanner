@@ -8,9 +8,46 @@ namespace TourPlanner.Model
         public Guid TourId { get; set; }
         public DateTime Date { get; set; } = DateTime.Now;
         public string Comment { get; set; } = string.Empty;
-        public int Difficulty { get; set; } = 0;
-        public string CompletionTime { get; set; } = string.Empty;
-        public int Rating { get; set; } = 0;
+        private int _difficulty = 1;
+        public int Difficulty
+        {
+            get => _difficulty;
+            set
+            {
+                if (value < 1)
+                    _difficulty = 1;
+                else if (value > 10)
+                    _difficulty = 10;
+                else
+                    _difficulty = value;
+            }
+        }
+        private int _completionTime = 1;
+        public int CompletionTime
+        {
+            get => _completionTime;
+            set
+            {
+                if (value < 1)
+                    _completionTime = 1;
+                else
+                    _completionTime = value;
+            }
+        }
+        private int _rating = 1;
+        public int Rating
+        {
+            get => _rating;
+            set
+            {
+                if (value < 1)
+                    _rating = 1;
+                else if (value > 10)
+                    _rating = 10;
+                else
+                    _rating = value;
+            }
+        }
         public Guid Id { get; set; }
         public int Version { get; set; } = 1;
 

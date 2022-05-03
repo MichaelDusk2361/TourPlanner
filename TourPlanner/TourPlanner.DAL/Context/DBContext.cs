@@ -12,12 +12,24 @@ namespace TourPlanner.DAL.Context
 
         private readonly NpgsqlConnection _connection;
 
+        public static bool InitialConnectionAttemptFailed { get; set; } = false;
+
         public DBContext(string connectionString)
         {
-            _connection = new NpgsqlConnection(connectionString);
-            _connection.Open();
-            if (_connection.State != ConnectionState.Open)
+            if(InitialConnectionAttemptFailed)
                 throw new DBConnectionException("connection to DB not open");
+
+            try
+            {
+                _connection = new NpgsqlConnection(connectionString);
+                _connection.Open();
+                if (_connection.State != ConnectionState.Open)
+                    throw new Exception();
+            }
+            catch (Exception)
+            {
+                throw new DBConnectionException("connection to DB not open");
+            }
         }
 
         public void LoadTable<TEntity>() where TEntity : class, ITEntity

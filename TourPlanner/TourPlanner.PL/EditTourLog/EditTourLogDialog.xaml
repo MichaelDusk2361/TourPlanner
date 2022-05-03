@@ -27,13 +27,13 @@
             <TextBlock Grid.Row="1" Grid.Column="0">Comment</TextBlock>
             <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Log.Comment}" ></TextBox>
 
-            <TextBlock Grid.Row="2" Grid.Column="0">Difficulty</TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="0">Difficulty (1-10)</TextBlock>
             <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Log.Difficulty}" ></TextBox>
 
-            <TextBlock Grid.Row="3" Grid.Column="0">CompletionTime</TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="0">CompletionTime (min)</TextBlock>
             <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Log.CompletionTime}" ></TextBox>
 
-            <TextBlock Grid.Row="4" Grid.Column="0">Rating</TextBlock>
+            <TextBlock Grid.Row="4" Grid.Column="0">Rating (1-10)</TextBlock>
             <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Log.Rating}" ></TextBox>
         </Grid>
         <Button Command="{Binding ApplyEdit}">Apply</Button>

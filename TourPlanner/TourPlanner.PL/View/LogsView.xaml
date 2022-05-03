@@ -7,24 +7,15 @@
              xmlns:local="clr-namespace:TourPlanner.PL.View" d:DataContext="{d:DesignInstance Type=viewmodel:LogsViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <!--<DataGrid AutoGenerateColumns="False" SelectedItem="{Binding SelectedTourLog}" Margin="5,5,5,5" ItemsSource="{Binding Path=TourLogs}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Date" Binding="{Binding Path=Date}" />
-                <DataGridTextColumn Header="Difficulty" Binding="{Binding Path=Difficulty}"/>
-                <DataGridTextColumn Header="Rating" Binding="{Binding Path=Rating}"/>
-                <DataGridTextColumn Header="Duration" Binding="{Binding Path=CompletionTime}"/>
-                <DataGridTextColumn Width="*" Header="Comment" Binding="{Binding Path=Comment}"/>
-            </DataGrid.Columns>
-        </DataGrid>-->
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel>
                 <ListView x:Name="tourList" SelectedItem="{Binding SelectedTourLog}" ItemsSource="{Binding TourLogs}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}"/>
-                            <GridViewColumn Header="Difficulty" DisplayMemberBinding="{Binding Difficulty}"/>
-                            <GridViewColumn Header="Rating" DisplayMemberBinding="{Binding Rating}"/>
-                            <GridViewColumn Header="Duration" DisplayMemberBinding="{Binding CompletionTime}"/>
+                            <GridViewColumn Header="Difficulty (1-10)" DisplayMemberBinding="{Binding Difficulty}"/>
+                            <GridViewColumn Header="Rating (1-10)" DisplayMemberBinding="{Binding Rating}"/>
+                            <GridViewColumn Header="Duration (min)" DisplayMemberBinding="{Binding CompletionTime}"/>
                             <GridViewColumn Header="Comment" DisplayMemberBinding="{Binding Comment}"/>
                         </GridView>
                     </ListView.View>

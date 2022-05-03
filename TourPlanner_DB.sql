@@ -28,7 +28,7 @@ tourid uuid not null,
 date text null,
 comment text null,
 difficulty integer null,
-completiontime text null,
+completiontime integer null,
 rating integer null,
 version integer not null default 1,
 constraint fk_logs_tours foreign key(tourid) references tours(id) on delete cascade);
