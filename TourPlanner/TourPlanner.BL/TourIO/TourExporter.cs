@@ -21,7 +21,7 @@ namespace TourPlanner.BL.TourIO
         public void Export(string? path)
         {
             if (path == null)
-                path = $"TourPlannerExport_{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.json";
+                path = $"ToursPlannerExport_{DateTime.Now.ToString("yyyyMMddHHmmssfff")}_{Guid.NewGuid()}.json";
 
             var export = (from e in _uow.TourRepository.Get() select new TourToTourLogRelation(e)).ToList();
             foreach (var entity in export)

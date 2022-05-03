@@ -3,6 +3,7 @@ using TourPlanner.BL.MapQuestAPI;
 using TourPlanner.BL.TourIO;
 using TourPlanner.Common;
 using TourPlanner.DAL;
+using TourPlanner.DAL.Context;
 using TourPlanner.Model;
 
 namespace TourPlanner.BL.Controller
@@ -68,6 +69,12 @@ namespace TourPlanner.BL.Controller
                 tour.Destination.Contains(searchText, StringComparison.CurrentCultureIgnoreCase) ||
                 tour.Description.Contains(searchText, StringComparison.CurrentCultureIgnoreCase) ||
                 tour.Name.Contains(searchText, StringComparison.CurrentCultureIgnoreCase);
+        }
+
+        public void ExportIfInMemoryDBIsUsed(string? path)
+        {
+            if (DBContext.InitialConnectionAttemptFailed)
+                Export(path);
         }
 
         public void AddTour(Tour tour)

@@ -39,7 +39,7 @@ namespace TourPlanner.PL.ViewModel.Main
             MenuBar.ExportEvent += (sender, e) =>
             {
                 using var tourController = ControllerFactory.CreateTourController();
-                tourController.Export($"ToursPlannerExport_{DateTime.Now.ToString("yyyyMMddHHmmssfff")}_{Guid.NewGuid()}.pdf");
+                tourController.Export($"ToursPlannerExport_{DateTime.Now.ToString("yyyyMMddHHmmssfff")}_{Guid.NewGuid()}.json");
                 s_logger.Info("User generated export");
             };
         }

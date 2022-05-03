@@ -19,6 +19,15 @@ namespace TourPlanner.PL
     {
         private static readonly ILoggerWrapper s_logger = LoggerFactory.GetLogger();
 
+
+        public SearchBarViewModel searchBarViewModel { get; set; }
+        public ToursViewModel toursViewModel { get; set; }
+        public TourDetailViewModel tourDetailViewModel { get; set; }
+        public MenuBarViewModel menuBarViewModel { get; set; }
+        public LogsViewModel logsViewModel { get; set; }
+        public IControllerFactory controllerFactory { get; set; }
+        public MainViewModel mainViewModel { get; set; }
+
         private void ApplicationStartup(object sender, StartupEventArgs e)
         {
 
@@ -40,13 +49,13 @@ namespace TourPlanner.PL
 
             Directory.CreateDirectory(ConfigFile.AppSettings("MapDir"));
 
-            var searchBarViewModel = new SearchBarViewModel();
-            var toursViewModel = new ToursViewModel();
-            var tourDetailViewModel = new TourDetailViewModel();
-            var menuBarViewModel = new MenuBarViewModel();
-            var logsViewModel = new LogsViewModel();
-            var controllerFactory = CreateControllerFactory();
-            var mainViewModel = new MainViewModel(searchBarViewModel, toursViewModel, tourDetailViewModel, menuBarViewModel, logsViewModel, controllerFactory);
+            searchBarViewModel = new SearchBarViewModel();
+            toursViewModel = new ToursViewModel();
+            tourDetailViewModel = new TourDetailViewModel();
+            menuBarViewModel = new MenuBarViewModel();
+            logsViewModel = new LogsViewModel();
+            controllerFactory = CreateControllerFactory();
+            mainViewModel = new MainViewModel(searchBarViewModel, toursViewModel, tourDetailViewModel, menuBarViewModel, logsViewModel, controllerFactory);
 
             var window = new MainWindow
             {
@@ -59,6 +68,18 @@ namespace TourPlanner.PL
             };
 
             window.Show();
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            try
+            {
+                controllerFactory.CreateTourController().ExportIfInMemoryDBIsUsed(null);
+            }
+            finally
+            {
+                base.OnExit(e);
+            }
         }
 
         private static IControllerFactory CreateControllerFactory()

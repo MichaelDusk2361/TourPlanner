@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TourPlanner.PL.View"
         mc:Ignorable="d"
         Title="Tour planner" Height="750" Width="1000" MinWidth="500" MinHeight="450">
-
+        
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" MinWidth="100"/>
