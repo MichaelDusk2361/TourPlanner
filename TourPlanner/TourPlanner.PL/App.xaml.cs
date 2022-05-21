@@ -20,13 +20,13 @@ namespace TourPlanner.PL
         private static readonly ILoggerWrapper s_logger = LoggerFactory.GetLogger();
 
 
-        public SearchBarViewModel searchBarViewModel { get; set; }
-        public ToursViewModel toursViewModel { get; set; }
-        public TourDetailViewModel tourDetailViewModel { get; set; }
-        public MenuBarViewModel menuBarViewModel { get; set; }
-        public LogsViewModel logsViewModel { get; set; }
-        public IControllerFactory controllerFactory { get; set; }
-        public MainViewModel mainViewModel { get; set; }
+        public SearchBarViewModel SearchBarViewModel { get; set; }
+        public ToursViewModel ToursViewModel { get; set; }
+        public TourDetailViewModel TourDetailViewModel { get; set; }
+        public MenuBarViewModel MenuBarViewModel { get; set; }
+        public LogsViewModel LogsViewModel { get; set; }
+        public IControllerFactory ControllerFactory { get; set; }
+        public MainViewModel MainViewModel { get; set; }
 
         private void ApplicationStartup(object sender, StartupEventArgs e)
         {
@@ -49,22 +49,22 @@ namespace TourPlanner.PL
 
             Directory.CreateDirectory(ConfigFile.AppSettings("MapDir"));
 
-            searchBarViewModel = new SearchBarViewModel();
-            toursViewModel = new ToursViewModel();
-            tourDetailViewModel = new TourDetailViewModel();
-            menuBarViewModel = new MenuBarViewModel();
-            logsViewModel = new LogsViewModel();
-            controllerFactory = CreateControllerFactory();
-            mainViewModel = new MainViewModel(searchBarViewModel, toursViewModel, tourDetailViewModel, menuBarViewModel, logsViewModel, controllerFactory);
+            SearchBarViewModel = new SearchBarViewModel();
+            ToursViewModel = new ToursViewModel();
+            TourDetailViewModel = new TourDetailViewModel();
+            MenuBarViewModel = new MenuBarViewModel();
+            LogsViewModel = new LogsViewModel();
+            ControllerFactory = CreateControllerFactory();
+            MainViewModel = new MainViewModel(SearchBarViewModel, ToursViewModel, TourDetailViewModel, MenuBarViewModel, LogsViewModel, ControllerFactory);
 
             var window = new MainWindow
             {
-                DataContext = mainViewModel,
-                SearchBarView = { DataContext = searchBarViewModel },
-                ToursView = { DataContext = toursViewModel },
-                TourDetailView = { DataContext = tourDetailViewModel },
-                MenuBarView = { DataContext = menuBarViewModel },
-                LogsView = { DataContext = logsViewModel },
+                DataContext = MainViewModel,
+                SearchBarView = { DataContext = SearchBarViewModel },
+                ToursView = { DataContext = ToursViewModel },
+                TourDetailView = { DataContext = TourDetailViewModel },
+                MenuBarView = { DataContext = MenuBarViewModel },
+                LogsView = { DataContext = LogsViewModel },
             };
 
             window.Show();
@@ -74,7 +74,7 @@ namespace TourPlanner.PL
         {
             try
             {
-                controllerFactory.CreateTourController().ExportIfInMemoryDBIsUsed(null);
+                ControllerFactory.CreateTourController().ExportIfInMemoryDBIsUsed(null);
             }
             finally
             {

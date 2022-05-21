@@ -46,7 +46,7 @@ namespace TourPlanner.BL.Factory
                 catch
                 {
                     s_logger.Fatal("Could not use fallback in memory db");
-                     Environment.Exit(1);
+                    Environment.Exit(1);
                 }
             }
             return null;
