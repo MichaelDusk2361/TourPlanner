@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TourPlanner.DAL.Context.DBContext" Collapsed="true">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAACAEAAAAAEAAQAAAgIAAAAAAAQEAAAAABAA=</HashCode>
+      <FileName>Context\DBContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TourPlanner.DAL.Context.TourPlannerContext" Collapsed="true">
+    <Position X="4.5" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Context\TourPlannerContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TourPlanner.DAL.Exceptions.DBConnectionException" Collapsed="true">
+    <Position X="0.5" Y="11.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\DBConnectionException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TourPlanner.DAL.Exceptions.OrmException" Collapsed="true">
+    <Position X="2.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\OrmException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TourPlanner.DAL.Exceptions.StaleObjectStateException" Collapsed="true">
+    <Position X="4.5" Y="11.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\StaleObjectStateException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TourPlanner.DAL.Mock.DBContextMock" Collapsed="true">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAACAAAAAAAAAAQAAAgIAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Mock\DBContextMock.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TourPlanner.DAL.Mock.DBMock">
+    <Position X="0.5" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEQIAAAABAAAAAAAAAAAAAEAABAAAAEAAABAAEA=</HashCode>
+      <FileName>Mock\DBMock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TourPlanner.DAL.Mock.TourPlannerContextMock" Collapsed="true">
+    <Position X="4.5" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mock\TourPlannerContextMock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TourPlanner.DAL.Mock.UnitOfWorkMock" Collapsed="true">
+    <Position X="2.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAoAAACAEBCAAAAAAAAgAAAAAAABQAABAAAAAAAA=</HashCode>
+      <FileName>Mock\UnitOfWorkMock.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TourPlanner.DAL.ORM.ObjectRelationalMapper">
+    <Position X="3" Y="7" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAEAAAAAAAAAAAkAAAAAAgECAAAAAAA=</HashCode>
+      <FileName>ORM\ObjectRelationalMapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TourPlanner.DAL.Repository.GenericRepository&lt;TEntity&gt;">
+    <Position X="5" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAABgBAAAAAAAAAAAEAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Repository\GenericRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TourPlanner.DAL.UnitOfWork" Collapsed="true">
+    <Position X="2.5" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAoAAACAEBCAAAAAAAAggAAAAAABQAABAAAAAAAA=</HashCode>
+      <FileName>UnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="TourPlanner.DAL.Context.IDBContext" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAQAAAgIAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Context\IDBContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TourPlanner.DAL.IUnitOfWork">
+    <Position X="0.5" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAACAAAAAAAAgAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>IUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

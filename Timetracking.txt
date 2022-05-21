@@ -13,3 +13,4 @@
 2.5.2021 added import and export 3h
 2.5.2021 added unit tests 2h
 3.5.2021 added unique feature 2h
+total 40.5h

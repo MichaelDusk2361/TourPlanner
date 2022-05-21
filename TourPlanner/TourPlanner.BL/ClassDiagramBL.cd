@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TourPlanner.BL.Controller.BaseController">
+    <Position X="0.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAgAAACAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controller\BaseController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TourPlanner.BL.Controller.TourController">
+    <Position X="3" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CACAAAAAQAAAEIAAIAgARAAMAAAAAAABAAAAAAAoAAA=</HashCode>
+      <FileName>Controller\TourController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TourPlanner.BL.Controller.TourLogController">
+    <Position X="0.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAABAAAIAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controller\TourLogController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TourPlanner.BL.DocumentGeneration.TourReportGenerator">
+    <Position X="0.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAGQEAAAAAAAAAAAAACAAAAABAAAAAEAAAAA=</HashCode>
+      <FileName>DocumentGeneration\TourReportGenerator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TourPlanner.BL.DocumentGeneration.ToursSummaryGenerator">
+    <Position X="2.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAGAEAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>DocumentGeneration\ToursSummaryGenerator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TourPlanner.BL.Factory.ControllerFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Factory\ControllerFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TourPlanner.BL.Factory.ControllerFactoryMock" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Factory\ControllerFactoryMock.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TourPlanner.BL.MapQuestAPI.MapQuestAPIRequest" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="8.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAggAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>MapQuestAPI\MapQuestAPIRequest.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TourPlanner.BL.MapQuestAPI.MapQuestAPIRequestMock" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="9.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>MapQuestAPI\MapQuestAPIRequestMock.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TourPlanner.BL.MapQuestAPI.MapQuestAPIResponseParser">
+    <Position X="9.5" Y="8.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AQAAAABAAABAAAAAAAAAAAAgAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapQuestAPI\MapQuestAPIResponseParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TourPlanner.BL.TourIO.TourExporter">
+    <Position X="12.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TourIO\TourExporter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TourPlanner.BL.TourIO.TourImporter">
+    <Position X="14.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TourIO\TourImporter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TourPlanner.BL.Factory.IControllerFactory">
+    <Position X="0.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Factory\IControllerFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TourPlanner.BL.MapQuestAPI.IMapQuestAPIRequest">
+    <Position X="4.75" Y="8.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>MapQuestAPI\IMapQuestAPIRequest.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
